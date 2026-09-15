@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Educa - Skill Roadmap & Study Planner</title>
+
+   <!-- Google Fonts (Instrument Serif & Inter) -->
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+   <!-- Font Awesome CDN -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+
+   <!-- Core & Dedicated CSS -->
+   <link rel="stylesheet" href="css/style.css">
+   <link rel="stylesheet" href="css/roadmap.css">
+</head>
+<body>
+
+   <!-- Notification Toast -->
+   <div id="toast" class="toast"></div>
+
+   <!-- Header Area -->
+   <header class="header">
+      <section class="flex">
+         <a href="index.html" class="logo">Educa<span class="dot">.</span></a>
+
+         <!-- Floating Glass Pill Navigation Bar -->
+         <nav class="header-floating-nav">
+            <div class="header-nav-pill-group">
+               <a href="index.html#home" class="nav-pill-link">Home</a>
+               <a href="courses.html" class="nav-pill-link">Courses</a>
+               <a href="roadmap.html" class="nav-pill-link active">Roadmap</a>
+               <a href="doubts.html" class="nav-pill-link">Doubts</a>
+               <a href="collab.html" class="nav-pill-link">Collab</a>
+               <a href="3D_lab.html" class="nav-pill-link">3D Lab</a>
+               <a href="courses.html" class="header-cta-pill">
+                  <span>Reserve Seat</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+               </a>
+            </div>
+         </nav>
+
+         <div class="search-form">
+            <input type="text" id="global-search" placeholder="Search courses, playlists, tutors..." maxlength="100">
+            <button class="fas fa-search" id="global-search-btn"></button>
+         </div>
+
+         <div class="icons">
+            <div class="lang-selector-container">
+               <i class="fas fa-language tooltip" data-tooltip="Language"></i>
+               <select id="lang-selector" onchange="changeLanguage(this.value)">
+                  <option value="en">English (EN)</option>
+                  <option value="hi">हिन्दी (HI)</option>
+                  <option value="es">Español (ES)</option>
+                  <option value="ta">தமிழ் (TA)</option>
+               </select>
+            </div>
+            <div id="menu-btn" class="fas fa-bars tooltip" data-tooltip="Menu"></div>
+            <div id="search-btn" class="fas fa-search tooltip" data-tooltip="Search"></div>
+            <div id="user-btn" class="fas fa-user tooltip" data-tooltip="Profile"></div>
+            <div id="toggle-btn" class="fas fa-moon tooltip" data-tooltip="Theme"></div>
+         </div>
+      </section>
+   </header>
+
+   <!-- Sidebar Navigation -->
+   <div class="side-bar">
+      <div class="close-side-bar">
+         <i class="fas fa-times"></i>
+      </div>
+
+      <div class="profile">
+         <img src="images/pic-2.jpg" alt="Student Profile" class="avatar-image">
+         <h3 class="name">John Student</h3>
+         <p class="role">Student • Level 2</p>
+         <a href="index.html#profile" class="btn primary-btn">View Profile</a>
+      </div>
+
+      <nav class="navbar">
+         <a href="index.html" class="nav-link"><i class="fas fa-home"></i><span>Home</span></a>
+         <a href="about_us.html" class="nav-link"><i class="fas fa-question"></i><span>About Us</span></a>
+         <a href="courses.html" class="nav-link"><i class="fas fa-graduation-cap"></i><span>Courses</span></a>
+         <a href="roadmap.html" class="nav-link active"><i class="fas fa-route"></i><span>Skill Roadmap</span></a>
+         <a href="doubts.html" class="nav-link"><i class="fas fa-question-circle"></i><span>Doubt Nexus</span></a>
+         <a href="collab.html" class="nav-link"><i class="fas fa-users-gear"></i><span>Project Collab</span></a>
+         <a href="teacher.html" class="nav-link"><i class="fas fa-chalkboard-user"></i><span>Teachers</span></a>
+         <a href="3D_lab.html" class="nav-link"><i class="fas fa-cubes"></i><span>3D Tech Lab</span></a>
+         <a href="tutor_area.html" class="nav-link"><i class="fas fa-chart-line"></i><span>Tutor Area</span></a>
+         <a href="contact.html" class="nav-link"><i class="fas fa-headset"></i><span>Contact Us</span></a>
+      </nav>
+   </div>
+
+   <!-- Main Roadmap Content -->
+   <main class="main-container">
+      <h1 class="heading"><i class="fas fa-route"></i> Skill Roadmap & Adaptive Study Planner</h1>
+
+      <div class="roadmap-header-banner">
+         <div class="track-selector-group">
+            <span class="track-label"><i class="fas fa-compass"></i> Career Pathway:</span>
+            <div class="track-buttons" id="roadmap-track-buttons">
+               <!-- Dynamic tracks -->
+            </div>
+         </div>
+         <div class="roadmap-stats-strip">
+            <div class="rm-stat-card">
+               <i class="fas fa-check-circle" style="color: #2ed573;"></i>
+               <div>
+                  <h4 id="rm-stat-completed">2 / 6</h4>
+                  <p>Milestones Done</p>
+               </div>
+            </div>
+            <div class="rm-stat-card">
+               <i class="fas fa-bolt" style="color: #ffa502;"></i>
+               <div>
+                  <h4 id="rm-stat-xp">125 XP</h4>
+                  <p>Pathway XP</p>
+               </div>
+            </div>
+            <div class="rm-stat-card">
+               <i class="fas fa-percent" style="color: #7048e8;"></i>
+               <div>
+                  <h4 id="rm-stat-progress">33%</h4>
+                  <p>Progress</p>
+               </div>
+            </div>
+         </div>
+      </div>
+
+      <div class="roadmap-workspace-layout">
+         <div class="roadmap-tree-panel">
+            <div class="panel-title-bar">
+               <h3 id="current-track-title">Full-Stack Web Architect Pathway</h3>
+               <span class="badge-status-pill" id="current-track-level">Beginner to Pro</span>
+            </div>
+            <div class="roadmap-timeline" id="roadmap-timeline-container">
+               <!-- Milestones rendered by script.js -->
+            </div>
+         </div>
+
+         <div class="study-planner-panel">
+            <!-- Focus Study Hub -->
+            <div class="box pomodoro-card">
+               <div class="pomodoro-header">
+                  <h3><i class="fas fa-stopwatch"></i> Focus Study Hub</h3>
+                  <span class="pomo-mode-badge" id="pomo-mode-badge">Study Session</span>
+               </div>
+               <div class="pomodoro-display">
+                  <div class="pomodoro-circle">
+                     <span id="pomo-timer-text">25:00</span>
+                     <small id="pomo-sub-text">Deep Work Block</small>
+                  </div>
+               </div>
+               <div class="pomodoro-actions">
+                  <button id="pomo-start-btn" class="btn primary-btn" onclick="togglePomodoro()"><i class="fas fa-play"></i> Start Focus</button>
+                  <button id="pomo-reset-btn" class="btn option-btn" onclick="resetPomodoro()"><i class="fas fa-redo"></i> Reset</button>
+               </div>
+               <div class="pomodoro-mode-toggles">
+                  <button class="mode-btn active" onclick="setPomodoroMode('work')">25m Work</button>
+                  <button class="mode-btn" onclick="setPomodoroMode('shortBreak')">5m Break</button>
+                  <button class="mode-btn" onclick="setPomodoroMode('longBreak')">15m Rest</button>
+               </div>
+               <div class="pomodoro-footer-stats">
+                  <span><i class="fas fa-fire"></i> Today's Focus: <strong id="today-focus-mins">50 mins</strong></span>
+                  <span><i class="fas fa-medal"></i> +20 XP / block</span>
+               </div>
+            </div>
+
+            <!-- Spaced Repetition -->
+            <div class="box revision-card">
+               <h3><i class="fas fa-brain"></i> Spaced Repetition Deck</h3>
+               <p class="desc" style="color:var(--text-muted); font-size:0.85rem; margin-bottom:1rem;">Active recall checkpoints recommended for today based on retention.</p>
+               <div class="revision-items" id="spaced-repetition-list">
+                  <!-- Dynamic checkpoints -->
+               </div>
+            </div>
+         </div>
+      </div>
+   </main>
+
+   <!-- Footer Section -->
+   <footer class="footer">
+      &copy; 2026 <span>Educa</span> | All Rights Reserved. Designed for next-gen education.
+   </footer>
+
+   <!-- Load Global Shared Logic -->
+   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+   <script src="supabase-client.js"></script>
+   <script src="script.js"></script>
+   <script>
+      // Initialize standalone roadmap view
+      window.addEventListener('DOMContentLoaded', () => {
+         renderRoadmaps();
+      });
+   </script>
+</body>
+</html>

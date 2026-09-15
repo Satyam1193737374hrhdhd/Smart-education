@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Educa - About Us</title>
+
+   <!-- Google Fonts (Instrument Serif & Inter) -->
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+   <!-- Font Awesome CDN -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+
+   <!-- Core & Dedicated CSS -->
+   <link rel="stylesheet" href="css/style.css">
+   <link rel="stylesheet" href="css/about_us.css">
+</head>
+<body>
+
+   <!-- Header Area -->
+   <header class="header">
+      <section class="flex">
+         <a href="index.html" class="logo">Educa<span class="dot">.</span></a>
+
+         <!-- Floating Glass Pill Navigation Bar -->
+         <nav class="header-floating-nav">
+            <div class="header-nav-pill-group">
+               <a href="index.html#home" class="nav-pill-link">Home</a>
+               <a href="courses.html" class="nav-pill-link">Courses</a>
+               <a href="roadmap.html" class="nav-pill-link">Roadmap</a>
+               <a href="doubts.html" class="nav-pill-link">Doubts</a>
+               <a href="collab.html" class="nav-pill-link">Collab</a>
+               <a href="3D_lab.html" class="nav-pill-link">3D Lab</a>
+               <a href="courses.html" class="header-cta-pill">
+                  <span>Reserve Seat</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+               </a>
+            </div>
+         </nav>
+
+         <div class="search-form">
+            <input type="text" id="global-search" placeholder="Search courses, playlists, tutors..." maxlength="100">
+            <button class="fas fa-search" id="global-search-btn"></button>
+         </div>
+
+         <div class="icons">
+            <div id="menu-btn" class="fas fa-bars tooltip" data-tooltip="Menu"></div>
+            <div id="search-btn" class="fas fa-search tooltip" data-tooltip="Search"></div>
+            <div id="user-btn" class="fas fa-user tooltip" data-tooltip="Profile"></div>
+            <div id="toggle-btn" class="fas fa-moon tooltip" data-tooltip="Theme"></div>
+         </div>
+      </section>
+   </header>
+
+   <!-- Sidebar Navigation -->
+   <div class="side-bar">
+      <div class="close-side-bar">
+         <i class="fas fa-times"></i>
+      </div>
+
+      <div class="profile">
+         <img src="images/pic-2.jpg" alt="Student Profile" class="avatar-image">
+         <h3 class="name">John Student</h3>
+         <p class="role">Student • Level 2</p>
+         <a href="index.html#profile" class="btn primary-btn">View Profile</a>
+      </div>
+
+      <nav class="navbar">
+         <a href="index.html" class="nav-link"><i class="fas fa-home"></i><span>Home</span></a>
+         <a href="about_us.html" class="nav-link active"><i class="fas fa-question"></i><span>About Us</span></a>
+         <a href="courses.html" class="nav-link"><i class="fas fa-graduation-cap"></i><span>Courses</span></a>
+         <a href="roadmap.html" class="nav-link"><i class="fas fa-route"></i><span>Skill Roadmap</span></a>
+         <a href="doubts.html" class="nav-link"><i class="fas fa-question-circle"></i><span>Doubt Nexus</span></a>
+         <a href="collab.html" class="nav-link"><i class="fas fa-users-gear"></i><span>Project Collab</span></a>
+         <a href="teacher.html" class="nav-link"><i class="fas fa-chalkboard-user"></i><span>Teachers</span></a>
+         <a href="3D_lab.html" class="nav-link"><i class="fas fa-cubes"></i><span>3D Tech Lab</span></a>
+         <a href="tutor_area.html" class="nav-link"><i class="fas fa-chart-line"></i><span>Tutor Area</span></a>
+         <a href="contact.html" class="nav-link"><i class="fas fa-headset"></i><span>Contact Us</span></a>
+      </nav>
+   </div>
+
+   <!-- Main About Us Content -->
+   <main class="main-container">
+      <h1 class="heading"><i class="fas fa-info-circle"></i> About Educa</h1>
+
+      <!-- Hero Section -->
+      <section class="about-hero-section">
+         <div class="about-hero-graphic">
+            <div class="about-graphic-card">
+               <i class="fas fa-graduation-cap about-center-icon"></i>
+            </div>
+         </div>
+         <div class="about-hero-content">
+            <h2>Empowering the <span>Next Generation</span> of Engineers & Creators</h2>
+            <p>Educa was built on a bold mission: to bridge the gap between academic theory and real-world tech industry demands. We combine structured video courses, peer collaboration, and interactive 3D simulations.</p>
+            <p>Whether you're writing your first line of code in Python or mastering distributed database architectures, Educa provides personalized study roadmaps and active recall tools that make learning stick.</p>
+            <a href="courses.html" class="btn primary-btn" style="margin-top: 1rem; display: inline-block;">Browse Curriculum <i class="fas fa-arrow-right"></i></a>
+         </div>
+      </section>
+
+      <!-- Key Metrics -->
+      <h1 class="heading"><i class="fas fa-chart-simple"></i> Platform Impact</h1>
+      <div class="about-stats-grid">
+         <div class="about-stat-box">
+            <i class="fas fa-book-open"></i>
+            <div>
+               <h3>100+</h3>
+               <p>Curated Courses</p>
+            </div>
+         </div>
+         <div class="about-stat-box">
+            <i class="fas fa-user-graduate"></i>
+            <div>
+               <h3>25,000+</h3>
+               <p>Active Students</p>
+            </div>
+         </div>
+         <div class="about-stat-box">
+            <i class="fas fa-chalkboard-user"></i>
+            <div>
+               <h3>50+</h3>
+               <p>Expert Instructors</p>
+            </div>
+         </div>
+         <div class="about-stat-box">
+            <i class="fas fa-trophy"></i>
+            <div>
+               <h3>98.4%</h3>
+               <p>Completion Satisfaction</p>
+            </div>
+         </div>
+      </div>
+
+      <!-- Core Values Grid -->
+      <h1 class="heading"><i class="fas fa-gem"></i> Our Core Educational Pillars</h1>
+      <div class="values-grid">
+         <div class="value-card">
+            <i class="fas fa-laptop-code"></i>
+            <h3>Project-Driven Mastery</h3>
+            <p>Students don't just watch lectures—they build production-grade web applications, machine learning pipelines, and cloud systems.</p>
+         </div>
+         <div class="value-card">
+            <i class="fas fa-users-viewfinder"></i>
+            <h3>Peer-to-Peer Synergy</h3>
+            <p>Community doubt-solving forums, peer answer bounties, and collaborative student project matchmakers accelerate mastery.</p>
+         </div>
+         <div class="value-card">
+            <i class="fas fa-cubes"></i>
+            <h3>Interactive 3D Visualizations</h3>
+            <p>Abstract system architectures and algorithm data structures come alive with WebGL Three.js interactive virtual labs.</p>
+         </div>
+      </div>
+
+      <!-- Testimonials -->
+      <h1 class="heading"><i class="fas fa-comment-dots"></i> Student Voices</h1>
+      <div class="testimonials-grid">
+         <div class="testimonial-box">
+            <p class="testimonial-text">"Educa completely transformed how I learn. The combination of structured roadmaps, the Pomodoro focus timer, and instant doubt-solving makes studying addictive and efficient."</p>
+            <div class="testimonial-author">
+               <img src="images/pic-2.jpg" alt="Student">
+               <div class="author-info">
+                  <h4>Alice Vance</h4>
+                  <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+               </div>
+            </div>
+         </div>
+         <div class="testimonial-box">
+            <p class="testimonial-text">"Finding teammates for my machine learning project was effortless with the Project Collab Hub. We launched our app in just 3 weeks thanks to Educa's resources."</p>
+            <div class="testimonial-author">
+               <img src="images/pic-3.jpg" alt="Student">
+               <div class="author-info">
+                  <h4>Ben Carter</h4>
+                  <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+               </div>
+            </div>
+         </div>
+         <div class="testimonial-box">
+            <p class="testimonial-text">"The Skill Mastery Radar chart in the dashboard gave me clear visibility into my weak points before technical interviews. I landed my dream software engineer role!"</p>
+            <div class="testimonial-author">
+               <img src="images/pic-6.jpg" alt="Student">
+               <div class="author-info">
+                  <h4>Maya Lin</h4>
+                  <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </main>
+
+   <!-- Footer Section -->
+   <footer class="footer">
+      &copy; 2026 <span>Educa</span> | All Rights Reserved. Designed for next-gen education.
+   </footer>
+
+   <script>
+      const menuBtn = document.getElementById("menu-btn");
+      const sideBar = document.querySelector(".side-bar");
+      const closeBtn = document.querySelector(".close-side-bar");
+      const toggleBtn = document.getElementById("toggle-btn");
+
+      if (menuBtn) {
+         menuBtn.onclick = () => {
+            sideBar.classList.toggle("active");
+            document.body.classList.toggle("active");
+         };
+      }
+      if (closeBtn) {
+         closeBtn.onclick = () => {
+            sideBar.classList.remove("active");
+            document.body.classList.remove("active");
+         };
+      }
+      if (toggleBtn) {
+         toggleBtn.onclick = () => {
+            document.documentElement.classList.toggle("light");
+            document.documentElement.classList.toggle("dark");
+         };
+      }
+   </script>
+</body>
+</html>

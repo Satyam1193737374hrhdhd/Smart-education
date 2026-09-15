@@ -1,0 +1,180 @@
+/* ==========================================================================
+   Educa - Tutor Analytics Center Styles
+   ========================================================================== */
+
+.tutor-header-banner {
+   background: var(--panel-bg);
+   border: 1px solid var(--panel-border);
+   border-radius: var(--border-radius-lg);
+   padding: 2rem;
+   margin-bottom: 2rem;
+   box-shadow: var(--panel-shadow);
+   backdrop-filter: blur(10px);
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   flex-wrap: wrap;
+   gap: 1.5rem;
+}
+
+.tutor-header-banner h2 {
+   font-size: 1.8rem;
+   font-weight: 700;
+   color: var(--text-main);
+   margin-bottom: 0.4rem;
+}
+
+.tutor-header-banner p {
+   color: var(--text-muted);
+   font-size: 0.95rem;
+}
+
+.instructor-analytics-grid {
+   display: grid;
+   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+   gap: 1.5rem;
+   margin-bottom: 2.5rem;
+}
+
+.metric-card {
+   background: var(--panel-bg);
+   border: 1px solid var(--panel-border);
+   border-radius: var(--border-radius-md);
+   padding: 1.8rem;
+   display: flex;
+   align-items: center;
+   gap: 1.2rem;
+   box-shadow: var(--panel-shadow);
+   transition: var(--transition);
+}
+
+.metric-card:hover {
+   transform: translateY(-4px);
+   border-color: rgba(112, 72, 232, 0.4);
+}
+
+.metric-card i {
+   font-size: 2.4rem;
+   width: 65px;
+   height: 65px;
+   background: rgba(255, 255, 255, 0.03);
+   border-radius: var(--border-radius-sm);
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+
+.metric-card h3 {
+   font-size: 1.8rem;
+   font-weight: 700;
+   color: var(--text-main);
+}
+
+.metric-card p {
+   font-size: 0.85rem;
+   color: var(--text-muted);
+}
+
+/* Charts Row */
+.instructor-charts-row {
+   display: grid;
+   grid-template-columns: 1fr 1fr;
+   gap: 2rem;
+   margin-bottom: 2.5rem;
+}
+
+.chart-box {
+   background: var(--panel-bg);
+   border: 1px solid var(--panel-border);
+   border-radius: var(--border-radius-lg);
+   padding: 1.8rem;
+   box-shadow: var(--panel-shadow);
+   backdrop-filter: blur(10px);
+}
+
+.chart-box h3 {
+   font-size: 1.2rem;
+   font-weight: 700;
+   color: var(--text-main);
+   margin-bottom: 1.5rem;
+   display: flex;
+   align-items: center;
+   gap: 0.6rem;
+}
+
+.chart-container {
+   position: relative;
+   height: 280px;
+   width: 100%;
+}
+
+/* Recent Submissions Table */
+.recent-students-log {
+   background: var(--panel-bg);
+   border: 1px solid var(--panel-border);
+   border-radius: var(--border-radius-lg);
+   padding: 2rem;
+   box-shadow: var(--panel-shadow);
+   backdrop-filter: blur(10px);
+}
+
+.recent-students-log h3 {
+   font-size: 1.3rem;
+   font-weight: 700;
+   color: var(--text-main);
+   margin-bottom: 1.5rem;
+   display: flex;
+   align-items: center;
+   gap: 0.6rem;
+}
+
+.table-container {
+   overflow-x: auto;
+}
+
+.analytics-table {
+   width: 100%;
+   border-collapse: collapse;
+   text-align: left;
+}
+
+.analytics-table th {
+   background: rgba(255, 255, 255, 0.02);
+   padding: 1rem;
+   color: var(--text-muted);
+   font-size: 0.85rem;
+   text-transform: uppercase;
+   letter-spacing: 0.5px;
+   border-bottom: 1px solid var(--panel-border);
+}
+
+.analytics-table td {
+   padding: 1.2rem 1rem;
+   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+   font-size: 0.95rem;
+   color: var(--text-main);
+}
+
+.status-pass {
+   background: rgba(46, 213, 115, 0.15);
+   color: #2ed573;
+   padding: 0.25rem 0.6rem;
+   border-radius: 4px;
+   font-weight: 700;
+   font-size: 0.85rem;
+}
+
+.status-fail {
+   background: rgba(255, 118, 117, 0.15);
+   color: var(--secondary-color);
+   padding: 0.25rem 0.6rem;
+   border-radius: 4px;
+   font-weight: 700;
+   font-size: 0.85rem;
+}
+
+@media (max-width: 991px) {
+   .instructor-charts-row {
+      grid-template-columns: 1fr;
+   }
+}

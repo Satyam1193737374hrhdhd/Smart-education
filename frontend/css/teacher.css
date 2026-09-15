@@ -1,0 +1,162 @@
+/* ==========================================================================
+   Educa - Expert Teachers Directory Styles
+   ========================================================================== */
+
+.teachers-search-banner {
+   background: var(--panel-bg);
+   border: 1px solid var(--panel-border);
+   border-radius: var(--border-radius-lg);
+   padding: 2rem;
+   margin-bottom: 2.5rem;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   flex-wrap: wrap;
+   gap: 1.5rem;
+   box-shadow: var(--panel-shadow);
+   backdrop-filter: blur(10px);
+}
+
+.teachers-search-banner .search-box {
+   flex: 1;
+   min-width: 280px;
+   display: flex;
+   align-items: center;
+   background: var(--input-bg);
+   border: 1px solid var(--input-border);
+   border-radius: 30px;
+   padding: 0.7rem 1.4rem;
+   gap: 0.8rem;
+}
+
+.teachers-search-banner .search-box input {
+   flex: 1;
+   background: transparent;
+   color: var(--text-main);
+   font-size: 0.95rem;
+}
+
+.teachers-search-banner .search-box i {
+   color: var(--text-muted);
+}
+
+.become-tutor-banner {
+   background: linear-gradient(135deg, rgba(112, 72, 232, 0.2) 0%, rgba(255, 118, 117, 0.15) 100%);
+   border: 1px solid rgba(112, 72, 232, 0.3);
+   border-radius: var(--border-radius-lg);
+   padding: 2rem;
+   margin-bottom: 2.5rem;
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   flex-wrap: wrap;
+   gap: 1.5rem;
+}
+
+.become-tutor-banner h3 {
+   font-size: 1.4rem;
+   font-weight: 700;
+   color: var(--text-main);
+   margin-bottom: 0.4rem;
+}
+
+.become-tutor-banner p {
+   color: var(--text-muted);
+   font-size: 0.95rem;
+}
+
+.teachers-grid {
+   display: grid;
+   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+   gap: 2rem;
+}
+
+.teacher-card {
+   background: var(--panel-bg);
+   border: 1px solid var(--panel-border);
+   border-radius: var(--border-radius-lg);
+   padding: 2rem;
+   text-align: center;
+   box-shadow: var(--panel-shadow);
+   transition: var(--transition);
+   backdrop-filter: blur(10px);
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between;
+}
+
+.teacher-card:hover {
+   transform: translateY(-5px);
+   border-color: rgba(112, 72, 232, 0.4);
+   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+}
+
+.teacher-avatar-wrap {
+   position: relative;
+   width: 100px;
+   height: 100px;
+   margin: 0 auto 1.2rem auto;
+}
+
+.teacher-avatar-wrap img {
+   width: 100%;
+   height: 100%;
+   border-radius: 50%;
+   object-fit: cover;
+   border: 3px solid var(--primary-color);
+}
+
+.teacher-verified-badge {
+   position: absolute;
+   bottom: 0;
+   right: 5px;
+   background: #2ed573;
+   color: #fff;
+   width: 26px;
+   height: 26px;
+   border-radius: 50%;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   font-size: 0.75rem;
+   border: 2px solid var(--panel-bg);
+}
+
+.teacher-card h3 {
+   font-size: 1.3rem;
+   font-weight: 700;
+   color: var(--text-main);
+   margin-bottom: 0.3rem;
+}
+
+.teacher-card .profession {
+   font-size: 0.9rem;
+   color: var(--primary-color);
+   font-weight: 600;
+   margin-bottom: 1.2rem;
+}
+
+.teacher-stats-row {
+   display: flex;
+   justify-content: space-around;
+   background: rgba(255, 255, 255, 0.03);
+   border: 1px solid var(--panel-border);
+   border-radius: var(--border-radius-sm);
+   padding: 0.8rem;
+   margin-bottom: 1.5rem;
+}
+
+.t-stat h4 {
+   font-size: 1.1rem;
+   font-weight: 700;
+   color: var(--text-main);
+}
+
+.t-stat p {
+   font-size: 0.75rem;
+   color: var(--text-muted);
+}
+
+.teacher-card .btn {
+   width: 100%;
+}

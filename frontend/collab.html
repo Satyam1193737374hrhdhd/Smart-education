@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Educa - Project Collab & Resource Vault</title>
+
+   <!-- Google Fonts (Instrument Serif & Inter) -->
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+   <!-- Font Awesome CDN -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+
+   <!-- Core & Dedicated CSS -->
+   <link rel="stylesheet" href="css/style.css">
+   <link rel="stylesheet" href="css/collab.css">
+</head>
+<body>
+
+   <!-- Notification Toast -->
+   <div id="toast" class="toast"></div>
+
+   <!-- Header Area -->
+   <header class="header">
+      <section class="flex">
+         <a href="index.html" class="logo">Educa<span class="dot">.</span></a>
+
+         <!-- Floating Glass Pill Navigation Bar -->
+         <nav class="header-floating-nav">
+            <div class="header-nav-pill-group">
+               <a href="index.html#home" class="nav-pill-link">Home</a>
+               <a href="courses.html" class="nav-pill-link">Courses</a>
+               <a href="roadmap.html" class="nav-pill-link">Roadmap</a>
+               <a href="doubts.html" class="nav-pill-link">Doubts</a>
+               <a href="collab.html" class="nav-pill-link active">Collab</a>
+               <a href="3D_lab.html" class="nav-pill-link">3D Lab</a>
+               <a href="courses.html" class="header-cta-pill">
+                  <span>Reserve Seat</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+               </a>
+            </div>
+         </nav>
+
+         <div class="search-form">
+            <input type="text" id="global-search" placeholder="Search courses, playlists, tutors..." maxlength="100">
+            <button class="fas fa-search" id="global-search-btn"></button>
+         </div>
+
+         <div class="icons">
+            <div class="lang-selector-container">
+               <i class="fas fa-language tooltip" data-tooltip="Language"></i>
+               <select id="lang-selector" onchange="changeLanguage(this.value)">
+                  <option value="en">English (EN)</option>
+                  <option value="hi">हिन्दी (HI)</option>
+                  <option value="es">Español (ES)</option>
+                  <option value="ta">தமிழ் (TA)</option>
+               </select>
+            </div>
+            <div id="menu-btn" class="fas fa-bars tooltip" data-tooltip="Menu"></div>
+            <div id="search-btn" class="fas fa-search tooltip" data-tooltip="Search"></div>
+            <div id="user-btn" class="fas fa-user tooltip" data-tooltip="Profile"></div>
+            <div id="toggle-btn" class="fas fa-moon tooltip" data-tooltip="Theme"></div>
+         </div>
+      </section>
+   </header>
+
+   <!-- Sidebar Navigation -->
+   <div class="side-bar">
+      <div class="close-side-bar">
+         <i class="fas fa-times"></i>
+      </div>
+
+      <div class="profile">
+         <img src="images/pic-2.jpg" alt="Student Profile" class="avatar-image">
+         <h3 class="name">John Student</h3>
+         <p class="role">Student • Level 2</p>
+         <a href="index.html#profile" class="btn primary-btn">View Profile</a>
+      </div>
+
+      <nav class="navbar">
+         <a href="index.html" class="nav-link"><i class="fas fa-home"></i><span>Home</span></a>
+         <a href="about_us.html" class="nav-link"><i class="fas fa-question"></i><span>About Us</span></a>
+         <a href="courses.html" class="nav-link"><i class="fas fa-graduation-cap"></i><span>Courses</span></a>
+         <a href="roadmap.html" class="nav-link"><i class="fas fa-route"></i><span>Skill Roadmap</span></a>
+         <a href="doubts.html" class="nav-link"><i class="fas fa-question-circle"></i><span>Doubt Nexus</span></a>
+         <a href="collab.html" class="nav-link active"><i class="fas fa-users-gear"></i><span>Project Collab</span></a>
+         <a href="teacher.html" class="nav-link"><i class="fas fa-chalkboard-user"></i><span>Teachers</span></a>
+         <a href="3D_lab.html" class="nav-link"><i class="fas fa-cubes"></i><span>3D Tech Lab</span></a>
+         <a href="tutor_area.html" class="nav-link"><i class="fas fa-chart-line"></i><span>Tutor Area</span></a>
+         <a href="contact.html" class="nav-link"><i class="fas fa-headset"></i><span>Contact Us</span></a>
+      </nav>
+   </div>
+
+   <!-- Main Collab & Resource Content -->
+   <main class="main-container">
+      <h1 class="heading"><i class="fas fa-users-gear"></i> Project Collab & Academic Resource Vault</h1>
+
+      <!-- Dual Sub-Tab Switcher -->
+      <div class="collab-nav-tabs">
+         <button class="collab-tab-btn active" id="tab-btn-projects" onclick="switchCollabSubTab('projects')">
+            <i class="fas fa-laptop-code"></i> Student Projects & Teams
+         </button>
+         <button class="collab-tab-btn" id="tab-btn-resources" onclick="switchCollabSubTab('resources')">
+            <i class="fas fa-folder-open"></i> Verified Academic Resource Vault
+         </button>
+      </div>
+
+      <!-- Section A: Projects & Team Matchmaking View -->
+      <div class="collab-sub-view active" id="collab-projects-view">
+         <div class="collab-action-strip">
+            <div class="filter-pill-group" id="collab-role-filters">
+               <!-- Dynamic role filter pills rendered by script.js -->
+            </div>
+            <button class="btn primary-btn" onclick="openCreateProjectModal()"><i class="fas fa-plus"></i> Pitch a Project</button>
+         </div>
+
+         <div class="collab-projects-grid" id="collab-projects-container">
+            <!-- Dynamic project cards -->
+         </div>
+      </div>
+
+      <!-- Section B: Academic Resource Vault View -->
+      <div class="collab-sub-view" id="collab-resources-view">
+         <div class="collab-action-strip">
+            <div class="doubts-search-group" style="max-width: 420px;">
+               <i class="fas fa-search"></i>
+               <input type="text" id="resource-search-input" placeholder="Search cheatsheets, lecture notes, templates..." oninput="handleResourceSearch(this.value)">
+            </div>
+            <div class="filter-pill-group" id="collab-resource-filters">
+               <!-- Dynamic category filter pills rendered by script.js -->
+            </div>
+            <button class="btn secondary-btn" onclick="openShareResourceModal()"><i class="fas fa-upload"></i> Share Resource</button>
+         </div>
+
+         <div class="resources-grid" id="collab-resources-container">
+            <!-- Dynamic resource cards -->
+         </div>
+      </div>
+
+      <!-- Modal 1: Pitch Project Modal -->
+      <div class="modal-backdrop" id="pitch-project-modal">
+         <div class="modal-card">
+            <div class="modal-header">
+               <h3><i class="fas fa-rocket"></i> Pitch a Student Collaboration Project</h3>
+               <button class="close-modal-btn" onclick="closeCreateProjectModal()"><i class="fas fa-times"></i></button>
+            </div>
+            <form id="pitch-project-form" onsubmit="handlePitchProjectSubmit(event)">
+               <p class="form-label">Project Title *</p>
+               <input type="text" id="proj-title" class="box" placeholder="e.g. AI-Powered Medical Diagnosis Web App" required>
+
+               <div class="form-row-2">
+                  <div>
+                     <p class="form-label">Category *</p>
+                     <select id="proj-category" class="box" required>
+                        <option value="Web Development">Web Development</option>
+                        <option value="Artificial Intelligence">Artificial Intelligence</option>
+                        <option value="Mobile Development">Mobile Development</option>
+                        <option value="Cloud Architecture">Cloud Architecture</option>
+                        <option value="UI/UX & Design">UI/UX & Design</option>
+                     </select>
+                  </div>
+                  <div>
+                     <p class="form-label">Tech Stack (comma separated) *</p>
+                     <input type="text" id="proj-tech" class="box" placeholder="React, FastAPI, Tailwind, PostgreSQL" required>
+                  </div>
+               </div>
+
+               <p class="form-label">Roles Needed (comma separated) *</p>
+               <input type="text" id="proj-roles" class="box" placeholder="Frontend Dev, ML Engineer, UI/UX Designer" required>
+
+               <p class="form-label">Project Pitch & Objectives *</p>
+               <textarea id="proj-desc" class="box" rows="4" placeholder="Briefly describe what your team will build, goals, and who you want to collaborate with..." required></textarea>
+
+               <div class="modal-actions">
+                  <button type="button" class="btn option-btn" onclick="closeCreateProjectModal()">Cancel</button>
+                  <button type="submit" class="btn primary-btn"><i class="fas fa-paper-plane"></i> Launch Team (+50 XP)</button>
+               </div>
+            </form>
+         </div>
+      </div>
+
+      <!-- Modal 2: Share Academic Resource Modal -->
+      <div class="modal-backdrop" id="share-resource-modal">
+         <div class="modal-card">
+            <div class="modal-header">
+               <h3><i class="fas fa-cloud-arrow-up"></i> Upload Academic Learning Resource</h3>
+               <button class="close-modal-btn" onclick="closeShareResourceModal()"><i class="fas fa-times"></i></button>
+            </div>
+            <form id="share-resource-form" onsubmit="handleShareResourceSubmit(event)">
+               <p class="form-label">Resource Title *</p>
+               <input type="text" id="res-title" class="box" placeholder="e.g. Modern CSS Grid & Flexbox Master Cheatsheet" required>
+
+               <div class="form-row-2">
+                  <div>
+                     <p class="form-label">Resource Format *</p>
+                     <select id="res-type" class="box" required>
+                        <option value="Cheatsheet">Cheatsheet</option>
+                        <option value="Study Notes">Study Notes</option>
+                        <option value="Starter Kit">Starter Kit</option>
+                        <option value="Exam Prep">Exam Prep</option>
+                     </select>
+                  </div>
+                  <div>
+                     <p class="form-label">Academic Subject / Topic *</p>
+                     <input type="text" id="res-topic" class="box" placeholder="CSS & Frontend Layouts" required>
+                  </div>
+               </div>
+
+               <p class="form-label">Resource Summary & Learning Value *</p>
+               <textarea id="res-desc" class="box" rows="4" placeholder="Explain what concepts this resource covers, tips for using it, and reference topics..." required></textarea>
+
+               <div class="modal-actions">
+                  <button type="button" class="btn option-btn" onclick="closeShareResourceModal()">Cancel</button>
+                  <button type="submit" class="btn primary-btn"><i class="fas fa-upload"></i> Share Resource (+30 XP)</button>
+               </div>
+            </form>
+         </div>
+      </div>
+   </main>
+
+   <!-- Footer Section -->
+   <footer class="footer">
+      &copy; 2026 <span>Educa</span> | All Rights Reserved. Designed for next-gen education.
+   </footer>
+
+   <!-- Global Logic & Standalone Initialization -->
+   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+   <script src="supabase-client.js"></script>
+   <script src="script.js"></script>
+   <script>
+      window.addEventListener('DOMContentLoaded', () => {
+         switchCollabSubTab('projects');
+      });
+   </script>
+</body>
+</html>

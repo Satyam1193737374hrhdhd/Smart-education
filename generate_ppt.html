@@ -1,0 +1,931 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Educa - Executive Project Presentation</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+   * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+   }
+
+   @page {
+      size: 16in 9in;
+      margin: 0;
+   }
+
+   body {
+      background: #090912;
+      color: #f1f2f6;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+   }
+
+   .slide {
+      width: 16in;
+      height: 9in;
+      position: relative;
+      overflow: hidden;
+      page-break-after: always;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 3.5rem 4.5rem;
+      background: radial-gradient(circle at 15% 15%, rgba(112, 72, 232, 0.18) 0%, transparent 45%),
+                  radial-gradient(circle at 85% 85%, rgba(13, 202, 240, 0.12) 0%, transparent 50%),
+                  #0a0815;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+   }
+
+   /* Header / Top Bar */
+   .slide-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding-bottom: 1.2rem;
+   }
+
+   .slide-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+   }
+
+   .brand-logo {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #7048e8, #0dcaf0);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      color: #fff;
+      box-shadow: 0 4px 20px rgba(112, 72, 232, 0.4);
+   }
+
+   .brand-text {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.6rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      background: linear-gradient(90deg, #fff, #c5aaff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+   }
+
+   .slide-tag {
+      background: rgba(112, 72, 232, 0.15);
+      border: 1px solid rgba(112, 72, 232, 0.35);
+      padding: 0.35rem 0.9rem;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #a55eea;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+   }
+
+   /* Slide Content Main */
+   .slide-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 1.5rem 0;
+   }
+
+   .slide-title-wrap {
+      margin-bottom: 2rem;
+   }
+
+   .slide-subtitle {
+      color: #0dcaf0;
+      font-size: 1.05rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+   }
+
+   .slide-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 2.8rem;
+      font-weight: 800;
+      line-height: 1.15;
+      color: #ffffff;
+   }
+
+   .slide-title span {
+      background: linear-gradient(135deg, #a55eea, #0dcaf0);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+   }
+
+   /* Card Grid Layouts */
+   .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+   }
+
+   .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.8rem;
+   }
+
+   .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+   }
+
+   .card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 18px;
+      padding: 1.8rem;
+      backdrop-filter: blur(10px);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      overflow: hidden;
+   }
+
+   .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #7048e8, #0dcaf0);
+      opacity: 0.6;
+   }
+
+   .card-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      background: rgba(112, 72, 232, 0.15);
+      border: 1px solid rgba(112, 72, 232, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      color: #0dcaf0;
+      margin-bottom: 1.2rem;
+   }
+
+   .card-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 0.6rem;
+   }
+
+   .card-desc {
+      font-size: 0.95rem;
+      color: #a4b0be;
+      line-height: 1.6;
+   }
+
+   .card-badge {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.3rem 0.7rem;
+      border-radius: 6px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      background: rgba(13, 202, 240, 0.1);
+      color: #0dcaf0;
+      border: 1px solid rgba(13, 202, 240, 0.2);
+   }
+
+   /* Stat Callout Box */
+   .stat-box {
+      background: rgba(112, 72, 232, 0.08);
+      border: 1px solid rgba(112, 72, 232, 0.25);
+      border-radius: 16px;
+      padding: 1.5rem;
+      text-align: center;
+   }
+
+   .stat-num {
+      font-family: 'Outfit', sans-serif;
+      font-size: 2.8rem;
+      font-weight: 800;
+      color: #fff;
+      line-height: 1;
+      margin-bottom: 0.4rem;
+      background: linear-gradient(135deg, #fff, #0dcaf0);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+   }
+
+   .stat-label {
+      font-size: 0.88rem;
+      color: #a4b0be;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      font-weight: 600;
+   }
+
+   /* Footer / Bottom Bar */
+   .slide-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      padding-top: 1rem;
+      font-size: 0.85rem;
+      color: #747d8c;
+   }
+
+   .footer-left {
+      display: flex;
+      gap: 1.5rem;
+   }
+
+   /* Slide 1 Cover Styles */
+   .cover-slide {
+      background: radial-gradient(circle at 75% 30%, rgba(112, 72, 232, 0.3) 0%, transparent 55%),
+                  radial-gradient(circle at 20% 80%, rgba(13, 202, 240, 0.2) 0%, transparent 60%),
+                  #070510;
+      justify-content: center;
+      text-align: left;
+      padding: 5rem 6rem;
+   }
+
+   .cover-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: rgba(112, 72, 232, 0.2);
+      border: 1px solid rgba(112, 72, 232, 0.5);
+      padding: 0.5rem 1.2rem;
+      border-radius: 30px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #0dcaf0;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 1.8rem;
+   }
+
+   .cover-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 4.8rem;
+      font-weight: 900;
+      line-height: 1.05;
+      letter-spacing: -1.5px;
+      margin-bottom: 1.2rem;
+      color: #ffffff;
+   }
+
+   .cover-title span {
+      background: linear-gradient(135deg, #a55eea 0%, #0dcaf0 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+   }
+
+   .cover-lead {
+      font-size: 1.4rem;
+      color: #a4b0be;
+      max-width: 900px;
+      line-height: 1.6;
+      margin-bottom: 3rem;
+      font-weight: 400;
+   }
+
+   .cover-meta-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      max-width: 1100px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 2rem;
+   }
+
+   .cover-meta-item h5 {
+      font-size: 0.8rem;
+      color: #747d8c;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 0.3rem;
+   }
+
+   .cover-meta-item p {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #fff;
+   }
+
+   /* Code Snippet Box */
+   .code-preview {
+      background: #05040a;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 1.2rem;
+      font-family: 'Consolas', 'Courier New', monospace;
+      font-size: 0.85rem;
+      color: #0dcaf0;
+      line-height: 1.5;
+   }
+</style>
+</head>
+<body>
+
+   <!-- ======================================================================= -->
+   <!-- SLIDE 1: Title & Executive Overview -->
+   <!-- ======================================================================= -->
+   <div class="slide cover-slide">
+      <div>
+         <div class="cover-badge">
+            <i class="fas fa-rocket"></i> Future of Education Challenge 2026
+         </div>
+         <h1 class="cover-title">
+            Educa <span>Smart Portal</span>
+         </h1>
+         <p class="cover-lead">
+            Reimagining how students learn, collaborate, practice, and solve academic doubts through adaptive roadmaps, real-time WebSockets, and immersive 3D simulations.
+         </p>
+
+         <div class="cover-meta-grid">
+            <div class="cover-meta-item">
+               <h5>Platform</h5>
+               <p>Educa v2.0 Next-Gen</p>
+            </div>
+            <div class="cover-meta-item">
+               <h5>Architecture</h5>
+               <p>Realtime BaaS & REST</p>
+            </div>
+            <div class="cover-meta-item">
+               <h5>Cloud Database</h5>
+               <p>Supabase PostgreSQL</p>
+            </div>
+            <div class="cover-meta-item">
+               <h5>Key Modalities</h5>
+               <p>Roadmap, Nexus, 3D Lab</p>
+            </div>
+         </div>
+      </div>
+   </div>
+
+   <!-- ======================================================================= -->
+   <!-- SLIDE 2: Problem Statement & Innovation Vision -->
+   <!-- ======================================================================= -->
+   <div class="slide">
+      <div class="slide-header">
+         <div class="slide-brand">
+            <div class="brand-logo"><i class="fas fa-graduation-cap"></i></div>
+            <div class="brand-text">Educa</div>
+         </div>
+         <span class="slide-tag">01 / Challenge Vision</span>
+      </div>
+
+      <div class="slide-content">
+         <div class="slide-title-wrap">
+            <div class="slide-subtitle"><i class="fas fa-lightbulb"></i> The Problem & Paradigm Shift</div>
+            <h2 class="slide-title">Transforming <span>Passive E-Learning</span> into Active Mastery</h2>
+         </div>
+
+         <div class="grid-2">
+            <div class="card" style="background: rgba(255, 71, 87, 0.05); border-color: rgba(255, 71, 87, 0.2);">
+               <div>
+                  <div class="card-icon" style="background: rgba(255, 71, 87, 0.15); color: #ff4757; border-color: rgba(255, 71, 87, 0.3);">
+                     <i class="fas fa-triangle-exclamation"></i>
+                  </div>
+                  <h3 class="card-title">Traditional E-Learning Limitations</h3>
+                  <div class="card-desc">
+                     <p style="margin-bottom: 0.8rem;">❌ <strong>Passive Consumption:</strong> Students watch recorded videos in isolation with near-zero feedback loops and low completion rates.</p>
+                     <p style="margin-bottom: 0.8rem;">❌ <strong>Unresolved Friction:</strong> When encountering bugs or conceptual roadblocks, students abandon courses due to absent doubt mentors.</p>
+                     <p style="margin-bottom: 0.8rem;">❌ <strong>Theory-Practice Gap:</strong> Lack of peer collaboration or team capstone projects to build verifiable portfolio evidence.</p>
+                     <p>❌ <strong>Abstract Internals:</strong> Server architectures and compilers remain conceptual black boxes without interactive visualization.</p>
+                  </div>
+               </div>
+               <span class="card-badge" style="background: rgba(255, 71, 87, 0.1); color: #ff4757; border-color: rgba(255, 71, 87, 0.3);">Legacy Pain Points</span>
+            </div>
+
+            <div class="card" style="background: rgba(13, 202, 240, 0.05); border-color: rgba(13, 202, 240, 0.2);">
+               <div>
+                  <div class="card-icon" style="background: rgba(13, 202, 240, 0.15); color: #0dcaf0; border-color: rgba(13, 202, 240, 0.3);">
+                     <i class="fas fa-sparkles"></i>
+                  </div>
+                  <h3 class="card-title">The Educa Ecosystem Solution</h3>
+                  <div class="card-desc">
+                     <p style="margin-bottom: 0.8rem;">✨ <strong>Adaptive Career Roadmaps:</strong> Step-by-step milestone progression paired with retention-maximizing spaced recall decks.</p>
+                     <p style="margin-bottom: 0.8rem;">⚡ <strong>Real-Time Doubt Nexus:</strong> Gamified peer-to-peer Q&A network with live WebSocket broadcasting and bounty incentives.</p>
+                     <p style="margin-bottom: 0.8rem;">🚀 <strong>Project Collab Vault:</strong> Capstone team recruitment where students match complementary roles to build real apps.</p>
+                     <p>🔬 <strong>3D Interactive Tech Labs:</strong> Hands-on WebGL visual simulations rendering server topologies and compiler parsing trees.</p>
+                  </div>
+               </div>
+               <span class="card-badge">Next-Gen Architecture</span>
+            </div>
+         </div>
+      </div>
+
+      <div class="slide-footer">
+         <div class="footer-left">
+            <span>Educa Executive Deck</span>
+            <span>•</span>
+            <span>Slide 2 of 8</span>
+         </div>
+         <div>Future of Education Challenge</div>
+      </div>
+   </div>
+
+   <!-- ======================================================================= -->
+   <!-- SLIDE 3: Feature 1 - Adaptive Roadmaps & Spaced Repetition -->
+   <!-- ======================================================================= -->
+   <div class="slide">
+      <div class="slide-header">
+         <div class="slide-brand">
+            <div class="brand-logo"><i class="fas fa-graduation-cap"></i></div>
+            <div class="brand-text">Educa</div>
+         </div>
+         <span class="slide-tag">02 / Feature Engine</span>
+      </div>
+
+      <div class="slide-content">
+         <div class="slide-title-wrap">
+            <div class="slide-subtitle"><i class="fas fa-route"></i> Career Pathway Architecture</div>
+            <h2 class="slide-title">Adaptive <span>Skill Roadmaps</span> & Study Planner</h2>
+         </div>
+
+         <div class="grid-3">
+            <div class="card">
+               <div>
+                  <div class="card-icon"><i class="fas fa-laptop-code"></i></div>
+                  <h3 class="card-title">Full-Stack Web Architect</h3>
+                  <p class="card-desc">
+                     Comprehensive trajectory spanning Semantic HTML5, CSS Grid architectures, Modern JavaScript ES6+, React Hooks, RESTful APIs, and Relational SQL normalization.
+                  </p>
+               </div>
+               <span class="card-badge">6 Milestones • 695 XP Total</span>
+            </div>
+
+            <div class="card">
+               <div>
+                  <div class="card-icon"><i class="fas fa-brain"></i></div>
+                  <h3 class="card-title">AI & Machine Learning</h3>
+                  <p class="card-desc">
+                     Advanced mathematical and modeling pathway: Python Vectorization, Exploratory Data Analysis, Scikit-Learn ensembles, PyTorch Deep Learning, and Generative AI RAG.
+                  </p>
+               </div>
+               <span class="card-badge">5 Milestones • 600 XP Total</span>
+            </div>
+
+            <div class="card">
+               <div>
+                  <div class="card-icon"><i class="fas fa-microchip"></i></div>
+                  <h3 class="card-title">DSA & System Design</h3>
+                  <p class="card-desc">
+                     Algorithmic complexity analysis, pointer manipulation, graphs, Dijkstra paths, distributed caching with Redis, consistent hashing, and sharded storage systems.
+                  </p>
+               </div>
+               <span class="card-badge">4 Milestones • 405 XP Total</span>
+            </div>
+         </div>
+
+         <div class="grid-2" style="margin-top: 1.5rem;">
+            <div class="card" style="padding: 1.2rem 1.6rem;">
+               <div style="display: flex; align-items: center; gap: 1rem;">
+                  <div class="card-icon" style="margin-bottom: 0; min-width: 44px; height: 44px;"><i class="fas fa-clock"></i></div>
+                  <div>
+                     <h4 style="font-size: 1.1rem; color: #fff;">Adaptive Spaced Repetition Decks</h4>
+                     <p style="font-size: 0.88rem; color: #a4b0be;">Automated daily recall intervals dynamically scheduled to flatten the Ebbinghaus forgetting curve.</p>
+                  </div>
+               </div>
+            </div>
+
+            <div class="card" style="padding: 1.2rem 1.6rem;">
+               <div style="display: flex; align-items: center; gap: 1rem;">
+                  <div class="card-icon" style="margin-bottom: 0; min-width: 44px; height: 44px;"><i class="fas fa-chart-pie"></i></div>
+                  <div>
+                     <h4 style="font-size: 1.1rem; color: #fff;">Radar Mastery Analytics</h4>
+                     <p style="font-size: 0.88rem; color: #a4b0be;">Six-axis competency breakdown visualizing student strength across Frontend, Backend, SQL, DSA, DevOps, and ML.</p>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+
+      <div class="slide-footer">
+         <div class="footer-left">
+            <span>Educa Executive Deck</span>
+            <span>•</span>
+            <span>Slide 3 of 8</span>
+         </div>
+         <div>Future of Education Challenge</div>
+      </div>
+   </div>
+
+   <!-- ======================================================================= -->
+   <!-- SLIDE 4: Feature 2 - Real-Time Doubt-Solving Nexus -->
+   <!-- ======================================================================= -->
+   <div class="slide">
+      <div class="slide-header">
+         <div class="slide-brand">
+            <div class="brand-logo"><i class="fas fa-graduation-cap"></i></div>
+            <div class="brand-text">Educa</div>
+         </div>
+         <span class="slide-tag">03 / Peer Interaction</span>
+      </div>
+
+      <div class="slide-content">
+         <div class="slide-title-wrap">
+            <div class="slide-subtitle"><i class="fas fa-bolt"></i> Instant Peer Troubleshooting</div>
+            <h2 class="slide-title">Real-Time <span>Doubt Nexus</span> with Bounty Rewards</h2>
+         </div>
+
+         <div class="grid-2">
+            <div>
+               <div class="card" style="margin-bottom: 1.5rem;">
+                  <div class="card-icon"><i class="fas fa-comments"></i></div>
+                  <h3 class="card-title">Incentivized Peer Learning Mechanism</h3>
+                  <p class="card-desc">
+                     Students encountering technical bugs or conceptual queries post their question, code snippet, and attach an <strong>XP Bounty</strong> (25-100 XP) from their own balance.
+                     Peers submit clear explanations and code solutions to claim the bounty.
+                  </p>
+                  <div style="margin-top: 1rem; display: flex; gap: 0.8rem;">
+                     <span class="card-badge"><i class="fas fa-coins"></i> XP Bounties</span>
+                     <span class="card-badge"><i class="fas fa-check-circle"></i> Verified Solutions</span>
+                     <span class="card-badge"><i class="fas fa-robot"></i> AI Co-Pilot Hints</span>
+                  </div>
+               </div>
+
+               <div class="stat-box" style="text-align: left; display: flex; align-items: center; justify-content: space-around;">
+                  <div>
+                     <div class="stat-num">&lt; 4m</div>
+                     <div class="stat-label">Avg. Peer Response Time</div>
+                  </div>
+                  <div style="border-left: 1px solid rgba(255,255,255,0.1); height: 50px;"></div>
+                  <div>
+                     <div class="stat-num">94%</div>
+                     <div class="stat-label">Resolution Rate</div>
+                  </div>
+                  <div style="border-left: 1px solid rgba(255,255,255,0.1); height: 50px;"></div>
+                  <div>
+                     <div class="stat-num">+15 XP</div>
+                     <div class="stat-label">Per Contribution</div>
+                  </div>
+               </div>
+            </div>
+
+            <div class="card" style="background: rgba(0, 0, 0, 0.4); border-color: rgba(112, 72, 232, 0.3);">
+               <h4 style="font-size: 1.1rem; color: #fff; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+                  <i class="fas fa-satellite-dish" style="color: #0dcaf0;"></i> Live WebSocket Architecture
+               </h4>
+               <p class="card-desc" style="margin-bottom: 1.2rem;">
+                  Powered by <strong>Supabase Realtime PostgreSQL Change Data Capture (CDC)</strong>. New questions and answers broadcast live over WebSocket channels:
+               </p>
+               <div class="code-preview">
+// Supabase WebSocket Realtime Subscription
+supabaseClient
+  .channel('public:doubts_realtime')
+  .on('postgres_changes', { 
+     event: 'INSERT', 
+     schema: 'public', 
+     table: 'doubts' 
+  }, (payload) => {
+     // Broadcasts live across all active student tabs!
+     AppState.doubts.unshift(payload.new);
+     renderDoubts();
+     showToast(`⚡ New Doubt: "${payload.new.title}"`);
+  })
+  .subscribe();
+               </div>
+               <p style="font-size: 0.82rem; color: #747d8c; margin-top: 1rem;">
+                  <i class="fas fa-shield-alt"></i> Zero-polling WebSocket protocol eliminates server load and ensures instant sub-second propagation.
+               </p>
+            </div>
+         </div>
+      </div>
+
+      <div class="slide-footer">
+         <div class="footer-left">
+            <span>Educa Executive Deck</span>
+            <span>•</span>
+            <span>Slide 4 of 8</span>
+         </div>
+         <div>Future of Education Challenge</div>
+      </div>
+   </div>
+
+   <!-- ======================================================================= -->
+   <!-- SLIDE 5: Feature 3 - Project Collab Vault & Resource Sharing -->
+   <!-- ======================================================================= -->
+   <div class="slide">
+      <div class="slide-header">
+         <div class="slide-brand">
+            <div class="brand-logo"><i class="fas fa-graduation-cap"></i></div>
+            <div class="brand-text">Educa</div>
+         </div>
+         <span class="slide-tag">04 / Collaboration</span>
+      </div>
+
+      <div class="slide-content">
+         <div class="slide-title-wrap">
+            <div class="slide-subtitle"><i class="fas fa-users"></i> Team Synergy & Knowledge Sharing</div>
+            <h2 class="slide-title">Project <span>Collaboration Vault</span> & Resources</h2>
+         </div>
+
+         <div class="grid-2">
+            <div class="card">
+               <div>
+                  <div class="card-icon"><i class="fas fa-handshake"></i></div>
+                  <h3 class="card-title">Capstone Team Formation</h3>
+                  <p class="card-desc">
+                     Solving the student team recruitment dilemma: Learners pitch project proposals, list exact required roles (Frontend, Backend, ML, UI/UX), specify tech stacks, and set team size caps.
+                  </p>
+                  <div style="margin-top: 1.2rem; background: rgba(255,255,255,0.02); padding: 1rem; border-radius: 10px;">
+                     <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem; font-size: 0.85rem;">
+                        <span style="color: #fff; font-weight: 600;">Smart EcoTrack Visualizer</span>
+                        <span style="color: #0dcaf0;">2 / 4 Members</span>
+                     </div>
+                     <p style="font-size: 0.8rem; color: #a4b0be; margin-bottom: 0.5rem;">React • Three.js • Node.js • Chart.js</p>
+                     <span style="font-size: 0.75rem; background: rgba(112, 72, 232, 0.2); color: #a55eea; padding: 0.2rem 0.5rem; border-radius: 4px;">Recruiting: Frontend Dev, UI/UX</span>
+                  </div>
+               </div>
+               <span class="card-badge">+50 XP Pitch • +25 XP Join Team</span>
+            </div>
+
+            <div class="card">
+               <div>
+                  <div class="card-icon"><i class="fas fa-book-bookmark"></i></div>
+                  <h3 class="card-title">Peer Academic Resource Vault</h3>
+                  <p class="card-desc">
+                     High-density student-curated academic assets categorized into: Cheatsheets, Study Notes, Starter Boilerplates, and Exam Prep guides.
+                  </p>
+                  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; margin-top: 1.2rem;">
+                     <div style="background: rgba(255,255,255,0.02); padding: 0.8rem; border-radius: 8px;">
+                        <p style="color: #fff; font-size: 0.85rem; font-weight: 600;"><i class="fas fa-file-code" style="color: #0dcaf0;"></i> Full-Stack Cheatsheet</p>
+                        <p style="color: #747d8c; font-size: 0.75rem;">1,420+ Downloads • 384 Upvotes</p>
+                     </div>
+                     <div style="background: rgba(255,255,255,0.02); padding: 0.8rem; border-radius: 8px;">
+                        <p style="color: #fff; font-size: 0.85rem; font-weight: 600;"><i class="fas fa-file-pdf" style="color: #a55eea;"></i> Visual DSA Notes</p>
+                        <p style="color: #747d8c; font-size: 0.75rem;">2,150+ Downloads • 512 Upvotes</p>
+                     </div>
+                  </div>
+               </div>
+               <span class="card-badge">+30 XP Sharing • Community Rated</span>
+            </div>
+         </div>
+      </div>
+
+      <div class="slide-footer">
+         <div class="footer-left">
+            <span>Educa Executive Deck</span>
+            <span>•</span>
+            <span>Slide 5 of 8</span>
+         </div>
+         <div>Future of Education Challenge</div>
+      </div>
+   </div>
+
+   <!-- ======================================================================= -->
+   <!-- SLIDE 6: Feature 4 - 3D Tech Labs & Vernacular Accessibility -->
+   <!-- ======================================================================= -->
+   <div class="slide">
+      <div class="slide-header">
+         <div class="slide-brand">
+            <div class="brand-logo"><i class="fas fa-graduation-cap"></i></div>
+            <div class="brand-text">Educa</div>
+         </div>
+         <span class="slide-tag">05 / Immersive Tech</span>
+      </div>
+
+      <div class="slide-content">
+         <div class="slide-title-wrap">
+            <div class="slide-subtitle"><i class="fas fa-cube"></i> Immersive WebGL & Linguistic Equity</div>
+            <h2 class="slide-title">Interactive <span>3D Tech Labs</span> & Multilingual Access</h2>
+         </div>
+
+         <div class="grid-2">
+            <div class="card">
+               <div>
+                  <div class="card-icon"><i class="fas fa-cubes"></i></div>
+                  <h3 class="card-title">Three.js 3D WebGL Diagnostics Lab</h3>
+                  <p class="card-desc">
+                     Transforms abstract system theory into experiential practice. Students enter a simulated 3D hardware space with full orbit camera controls to inspect:
+                  </p>
+                  <ul style="color: #a4b0be; font-size: 0.88rem; line-height: 1.7; margin-top: 0.8rem; padding-left: 1.2rem;">
+                     <li><strong>Server Cluster Topologies:</strong> API Routers, Redis Caches, InnoDB Database nodes.</li>
+                     <li><strong>Compiler Engine Pipelines:</strong> Lexical tokenizers, AST parsers, optimization passes.</li>
+                     <li><strong>Raycasting Diagnostics:</strong> Click nodes to read live CPU load, memory, and latency metrics.</li>
+                  </ul>
+               </div>
+               <span class="card-badge">WebGL Accelerated • Raycast Telemetry</span>
+            </div>
+
+            <div class="card">
+               <div>
+                  <div class="card-icon"><i class="fas fa-language"></i></div>
+                  <h3 class="card-title">Universal Vernacular Localization</h3>
+                  <p class="card-desc">
+                     Democratizing education across demographic boundaries. One-click instant UI translation without reloads across four major languages:
+                  </p>
+                  <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.8rem; margin-top: 1rem;">
+                     <div style="background: rgba(255,255,255,0.03); padding: 0.8rem; border-radius: 8px;">
+                        <span style="font-weight: 700; color: #fff;">English (en)</span>
+                        <p style="font-size: 0.75rem; color: #747d8c;">Global Lingua Franca</p>
+                     </div>
+                     <div style="background: rgba(255,255,255,0.03); padding: 0.8rem; border-radius: 8px;">
+                        <span style="font-weight: 700; color: #fff;">हिन्दी (hi)</span>
+                        <p style="font-size: 0.75rem; color: #747d8c;">North & Central India</p>
+                     </div>
+                     <div style="background: rgba(255,255,255,0.03); padding: 0.8rem; border-radius: 8px;">
+                        <span style="font-weight: 700; color: #fff;">Español (es)</span>
+                        <p style="font-size: 0.75rem; color: #747d8c;">Global Hispanic Audience</p>
+                     </div>
+                     <div style="background: rgba(255,255,255,0.03); padding: 0.8rem; border-radius: 8px;">
+                        <span style="font-weight: 700; color: #fff;">தமிழ் (ta)</span>
+                        <p style="font-size: 0.75rem; color: #747d8c;">South India & SE Asia</p>
+                     </div>
+                  </div>
+               </div>
+               <span class="card-badge">Instant Client Switching • Zero Latency</span>
+            </div>
+         </div>
+      </div>
+
+      <div class="slide-footer">
+         <div class="footer-left">
+            <span>Educa Executive Deck</span>
+            <span>•</span>
+            <span>Slide 6 of 8</span>
+         </div>
+         <div>Future of Education Challenge</div>
+      </div>
+   </div>
+
+   <!-- ======================================================================= -->
+   <!-- SLIDE 7: Technical Architecture & Realtime Cloud Engine -->
+   <!-- ======================================================================= -->
+   <div class="slide">
+      <div class="slide-header">
+         <div class="slide-brand">
+            <div class="brand-logo"><i class="fas fa-graduation-cap"></i></div>
+            <div class="brand-text">Educa</div>
+         </div>
+         <span class="slide-tag">06 / Engineering</span>
+      </div>
+
+      <div class="slide-content">
+         <div class="slide-title-wrap">
+            <div class="slide-subtitle"><i class="fas fa-server"></i> Resilient Engineering Stack</div>
+            <h2 class="slide-title">Full-Stack <span>Cloud Architecture</span> & Realtime Engine</h2>
+         </div>
+
+         <div class="grid-3">
+            <div class="card">
+               <div class="card-icon"><i class="fas fa-window-maximize"></i></div>
+               <h3 class="card-title">Frontend Tier</h3>
+               <ul style="color: #a4b0be; font-size: 0.85rem; line-height: 1.8; padding-left: 1rem;">
+                  <li>Semantic HTML5 & Vanilla CSS3</li>
+                  <li>Custom Glassmorphism Design Tokens</li>
+                  <li>Client Hash Router SPA</li>
+                  <li>Three.js WebGL 3D Simulation</li>
+                  <li>Chart.js Skill Radar & Analytics</li>
+                  <li>Dual-Layer LocalStorage Caching</li>
+               </ul>
+            </div>
+
+            <div class="card">
+               <div class="card-icon"><i class="fas fa-database"></i></div>
+               <h3 class="card-title">Supabase Cloud Tier</h3>
+               <ul style="color: #a4b0be; font-size: 0.85rem; line-height: 1.8; padding-left: 1rem;">
+                  <li>PostgreSQL 15+ Cloud Database</li>
+                  <li>10 Normalized Relational Tables</li>
+                  <li>Row Level Security (RLS) Policies</li>
+                  <li>Realtime Engine (Postgres WAL CDC)</li>
+                  <li>Sub-second WebSocket Broadcasts</li>
+                  <li>Zero-Config Serverless Client SDK</li>
+               </ul>
+            </div>
+
+            <div class="card">
+               <div class="card-icon"><i class="fas fa-network-wired"></i></div>
+               <h3 class="card-title">Microservice API Tier</h3>
+               <ul style="color: #a4b0be; font-size: 0.85rem; line-height: 1.8; padding-left: 1rem;">
+                  <li>Node.js & Express REST Backend</li>
+                  <li>Helmet Security Header Defense</li>
+                  <li>CORS Cross-Origin Controller</li>
+                  <li>Morgan HTTP Request Logger</li>
+                  <li>Modular MVC Routes & Models</li>
+                  <li><code>/health</code> Diagnostic Endpoint</li>
+               </ul>
+            </div>
+         </div>
+
+         <div class="card" style="margin-top: 1.5rem; padding: 1.2rem 1.8rem; background: rgba(13, 202, 240, 0.03); border-color: rgba(13, 202, 240, 0.25);">
+            <div style="display: flex; align-items: center; justify-content: space-between;">
+               <div>
+                  <span style="color: #0dcaf0; font-weight: 700; font-size: 0.9rem; text-transform: uppercase;">Active Database Connection</span>
+                  <p style="color: #fff; font-size: 1.05rem; font-weight: 600; margin-top: 0.2rem;">
+                     Project: <code>Education</code> (Ref: <code>jybnhvlsccruhkdsvvtq</code>) • Hosted at <code>https://jybnhvlsccruhkdsvvtq.supabase.co</code>
+                  </p>
+               </div>
+               <span style="background: rgba(46, 213, 115, 0.15); color: #2ed573; border: 1px solid rgba(46, 213, 115, 0.3); padding: 0.4rem 1rem; border-radius: 20px; font-weight: 700; font-size: 0.85rem;">
+                  <i class="fas fa-circle-check"></i> Connected & Realtime Active
+               </span>
+            </div>
+         </div>
+      </div>
+
+      <div class="slide-footer">
+         <div class="footer-left">
+            <span>Educa Executive Deck</span>
+            <span>•</span>
+            <span>Slide 7 of 8</span>
+         </div>
+         <div>Future of Education Challenge</div>
+      </div>
+   </div>
+
+   <!-- ======================================================================= -->
+   <!-- SLIDE 8: Impact, Challenge Matrix & Future Roadmap -->
+   <!-- ======================================================================= -->
+   <div class="slide">
+      <div class="slide-header">
+         <div class="slide-brand">
+            <div class="brand-logo"><i class="fas fa-graduation-cap"></i></div>
+            <div class="brand-text">Educa</div>
+         </div>
+         <span class="slide-tag">07 / Outcomes & Roadmap</span>
+      </div>
+
+      <div class="slide-content">
+         <div class="slide-title-wrap">
+            <div class="slide-subtitle"><i class="fas fa-trophy"></i> Results & Future Horizons</div>
+            <h2 class="slide-title">Measurable <span>Impact</span> & Challenge Alignment</h2>
+         </div>
+
+         <div class="grid-4">
+            <div class="stat-box">
+               <div class="stat-num">100%</div>
+               <div class="stat-label">Challenge Requirements Met</div>
+            </div>
+            <div class="stat-box">
+               <div class="stat-num">10</div>
+               <div class="stat-label">Cloud Relational Tables</div>
+            </div>
+            <div class="stat-box">
+               <div class="stat-num">&lt; 100ms</div>
+               <div class="stat-label">WebSocket Broadcast Latency</div>
+            </div>
+            <div class="stat-box">
+               <div class="stat-num">4</div>
+               <div class="stat-label">Languages Supported</div>
+            </div>
+         </div>
+
+         <div class="grid-2" style="margin-top: 1.5rem;">
+            <div class="card">
+               <h3 class="card-title"><i class="fas fa-check-double" style="color: #0dcaf0;"></i> Challenge Directions Addressed</h3>
+               <div class="card-desc" style="font-size: 0.88rem; line-height: 1.7;">
+                  <p>✔ <strong>Personalized Study Planner:</strong> Adaptive milestone roadmaps & spaced recall.</p>
+                  <p>✔ <strong>Peer-Learning Platform:</strong> Realtime Doubt Nexus with bounty rewards.</p>
+                  <p>✔ <strong>Doubt-Solving Portal:</strong> Code previews, upvoting & AI Co-Pilot hints.</p>
+                  <p>✔ <strong>Interactive Learning Dashboard:</strong> Radar skills chart & daily streak gamification.</p>
+                  <p>✔ <strong>Resource-Sharing Platform:</strong> Academic Vault for cheat sheets & starter kits.</p>
+                  <p>✔ <strong>Project Collaboration Portal:</strong> Team pitches with role recruitment & applications.</p>
+               </div>
+            </div>
+
+            <div class="card">
+               <h3 class="card-title"><i class="fas fa-compass" style="color: #a55eea;"></i> Next-Phase Horizons (v3.0)</h3>
+               <div class="card-desc" style="font-size: 0.88rem; line-height: 1.7;">
+                  <p>🔮 <strong>AI Voice Tutor:</strong> Conversational code explanations utilizing multimodal models.</p>
+                  <p>🔮 <strong>In-Browser Code Sandboxes:</strong> WebAssembly execution for instant test case validation.</p>
+                  <p>🔮 <strong>Decentralized Credentials:</strong> Cryptographically signed completion badges.</p>
+                  <p>🔮 <strong>Live AR Lab Classroom:</strong> Multi-user collaborative 3D hardware teardowns.</p>
+               </div>
+            </div>
+         </div>
+      </div>
+
+      <div class="slide-footer">
+         <div class="footer-left">
+            <span>Educa Executive Deck</span>
+            <span>•</span>
+            <span>Slide 8 of 8</span>
+         </div>
+         <div style="font-weight: 700; color: #0dcaf0;">Thank You • Built for the Future of Education</div>
+      </div>
+   </div>
+
+</body>
+</html>

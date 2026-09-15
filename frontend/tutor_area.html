@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Educa - Tutor Analytics Center</title>
+
+   <!-- Google Fonts (Instrument Serif & Inter) -->
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+   <!-- Font Awesome CDN -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+
+   <!-- Chart.js CDN -->
+   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+   <!-- Core & Dedicated CSS -->
+   <link rel="stylesheet" href="css/style.css">
+   <link rel="stylesheet" href="css/tutor_area.css">
+</head>
+<body>
+
+   <!-- Header Area -->
+   <header class="header">
+      <section class="flex">
+         <a href="index.html" class="logo">Educa<span class="dot">.</span></a>
+
+         <!-- Floating Glass Pill Navigation Bar -->
+         <nav class="header-floating-nav">
+            <div class="header-nav-pill-group">
+               <a href="index.html#home" class="nav-pill-link">Home</a>
+               <a href="courses.html" class="nav-pill-link">Courses</a>
+               <a href="roadmap.html" class="nav-pill-link">Roadmap</a>
+               <a href="doubts.html" class="nav-pill-link">Doubts</a>
+               <a href="collab.html" class="nav-pill-link">Collab</a>
+               <a href="3D_lab.html" class="nav-pill-link">3D Lab</a>
+               <a href="courses.html" class="header-cta-pill">
+                  <span>Reserve Seat</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+               </a>
+            </div>
+         </nav>
+
+         <div class="search-form">
+            <input type="text" id="global-search" placeholder="Search courses, playlists, tutors..." maxlength="100">
+            <button class="fas fa-search" id="global-search-btn"></button>
+         </div>
+
+         <div class="icons">
+            <div id="menu-btn" class="fas fa-bars tooltip" data-tooltip="Menu"></div>
+            <div id="search-btn" class="fas fa-search tooltip" data-tooltip="Search"></div>
+            <div id="user-btn" class="fas fa-user tooltip" data-tooltip="Profile"></div>
+            <div id="toggle-btn" class="fas fa-moon tooltip" data-tooltip="Theme"></div>
+         </div>
+      </section>
+   </header>
+
+   <!-- Sidebar Navigation -->
+   <div class="side-bar">
+      <div class="close-side-bar">
+         <i class="fas fa-times"></i>
+      </div>
+
+      <div class="profile">
+         <img src="images/pic-1.jpg" alt="Tutor Profile" class="avatar-image">
+         <h3 class="name">Dev Sarah</h3>
+         <p class="role">Instructor • Verified</p>
+         <a href="index.html#instructor" class="btn primary-btn">Instructor Area</a>
+      </div>
+
+      <nav class="navbar">
+         <a href="index.html" class="nav-link"><i class="fas fa-home"></i><span>Home</span></a>
+         <a href="about_us.html" class="nav-link"><i class="fas fa-question"></i><span>About Us</span></a>
+         <a href="courses.html" class="nav-link"><i class="fas fa-graduation-cap"></i><span>Courses</span></a>
+         <a href="roadmap.html" class="nav-link"><i class="fas fa-route"></i><span>Skill Roadmap</span></a>
+         <a href="doubts.html" class="nav-link"><i class="fas fa-question-circle"></i><span>Doubt Nexus</span></a>
+         <a href="collab.html" class="nav-link"><i class="fas fa-users-gear"></i><span>Project Collab</span></a>
+         <a href="teacher.html" class="nav-link"><i class="fas fa-chalkboard-user"></i><span>Teachers</span></a>
+         <a href="3D_lab.html" class="nav-link"><i class="fas fa-cubes"></i><span>3D Tech Lab</span></a>
+         <a href="tutor_area.html" class="nav-link active"><i class="fas fa-chart-line"></i><span>Tutor Area</span></a>
+         <a href="contact.html" class="nav-link"><i class="fas fa-headset"></i><span>Contact Us</span></a>
+      </nav>
+   </div>
+
+   <!-- Main Tutor Area Content -->
+   <main class="main-container">
+      <div class="tutor-header-banner">
+         <div>
+            <h2><i class="fas fa-chart-line" style="color: var(--primary-color);"></i> Tutor Analytics Center</h2>
+            <p>Real-time telemetry on student course enrollments, active watch time, and quiz comprehension rates.</p>
+         </div>
+         <div class="badge-status-pill">
+            <span><i class="fas fa-circle-check" style="color: #2ed573;"></i> Instructor Account Active</span>
+         </div>
+      </div>
+
+      <!-- Quick Metrics Grid -->
+      <div class="instructor-analytics-grid">
+         <div class="metric-card">
+            <i class="fas fa-wallet" style="color: #2ecc71;"></i>
+            <div>
+               <h3>$3,450</h3>
+               <p>Total Tutor Earnings</p>
+            </div>
+         </div>
+         <div class="metric-card">
+            <i class="fas fa-users" style="color: #3498db;"></i>
+            <div>
+               <h3>182</h3>
+               <p>Active Students Enrolled</p>
+            </div>
+         </div>
+         <div class="metric-card">
+            <i class="fas fa-circle-question" style="color: #f1c40f;"></i>
+            <div>
+               <h3>78.2%</h3>
+               <p>Average Quiz Score</p>
+            </div>
+         </div>
+         <div class="metric-card">
+            <i class="fas fa-star" style="color: #e67e22;"></i>
+            <div>
+               <h3>4.9 / 5</h3>
+               <p>Tutor Rating (48 reviews)</p>
+            </div>
+         </div>
+      </div>
+
+      <!-- Charts Section -->
+      <div class="instructor-charts-row">
+         <div class="chart-box">
+            <h3><i class="fas fa-chart-bar" style="color: var(--primary-color);"></i> Course Enrollments Breakdown</h3>
+            <div class="chart-container">
+               <canvas id="courseEnrollmentCanvas"></canvas>
+            </div>
+         </div>
+         <div class="chart-box">
+            <h3><i class="fas fa-chart-area" style="color: var(--secondary-color);"></i> Student Weekly Study Activity (Hours)</h3>
+            <div class="chart-container">
+               <canvas id="weeklyActivityCanvas"></canvas>
+            </div>
+         </div>
+      </div>
+
+      <!-- Recent Submissions Table -->
+      <div class="recent-students-log">
+         <h3><i class="fas fa-clock" style="color: var(--primary-color);"></i> Recent Student Submissions</h3>
+         <div class="table-container">
+            <table class="analytics-table">
+               <thead>
+                  <tr>
+                     <th>Student</th>
+                     <th>Activity</th>
+                     <th>Quiz Grade</th>
+                     <th>XP Payout</th>
+                     <th>Date</th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <tr>
+                     <td><strong>Alice Vance</strong></td>
+                     <td>Complete HTML5 Masterclass (Quiz)</td>
+                     <td><span class="status-pass">100%</span></td>
+                     <td>+100 XP</td>
+                     <td>Today</td>
+                  </tr>
+                  <tr>
+                     <td><strong>Ben Carter</strong></td>
+                     <td>JavaScript ES6 Essentials (Quiz)</td>
+                     <td><span class="status-pass">66%</span></td>
+                     <td>+100 XP</td>
+                     <td>Today</td>
+                  </tr>
+                  <tr>
+                     <td><strong>Carlos Ortega</strong></td>
+                     <td>Figma UI Design (Quiz)</td>
+                     <td><span class="status-fail">50%</span></td>
+                     <td>0 XP</td>
+                     <td>Yesterday</td>
+                  </tr>
+                  <tr>
+                     <td><strong>Maya Lin</strong></td>
+                     <td>React State & Hooks (Quiz)</td>
+                     <td><span class="status-pass">100%</span></td>
+                     <td>+100 XP</td>
+                     <td>2 days ago</td>
+                  </tr>
+               </tbody>
+            </table>
+         </div>
+      </div>
+   </main>
+
+   <!-- Footer Section -->
+   <footer class="footer">
+      &copy; 2026 <span>Educa</span> | All Rights Reserved. Designed for next-gen education.
+   </footer>
+
+   <!-- Charts Initializer -->
+   <script>
+      function initTutorCharts() {
+         // 1. Enrollment Bar Chart
+         const barCanvas = document.getElementById("courseEnrollmentCanvas");
+         if (barCanvas) {
+            new Chart(barCanvas.getContext('2d'), {
+               type: 'bar',
+               data: {
+                  labels: ['HTML5', 'CSS Systems', 'JavaScript', 'React.js', 'PHP / MySQL', 'UI/UX'],
+                  datasets: [{
+                     label: 'Enrolled Students',
+                     data: [78, 65, 92, 110, 45, 84],
+                     backgroundColor: 'rgba(112, 72, 232, 0.7)',
+                     borderColor: '#7048e8',
+                     borderWidth: 1,
+                     borderRadius: 6
+                  }]
+               },
+               options: {
+                  responsive: true,
+                  maintainAspectRatio: false,
+                  scales: {
+                     y: {
+                        beginAtZero: true,
+                        grid: { color: 'rgba(255, 255, 255, 0.05)' },
+                        ticks: { color: '#a4b0be' }
+                     },
+                     x: {
+                        grid: { display: false },
+                        ticks: { color: '#a4b0be' }
+                     }
+                  },
+                  plugins: {
+                     legend: { display: false }
+                  }
+               }
+            });
+         }
+
+         // 2. Weekly Activity Area Chart
+         const lineCanvas = document.getElementById("weeklyActivityCanvas");
+         if (lineCanvas) {
+            new Chart(lineCanvas.getContext('2d'), {
+               type: 'line',
+               data: {
+                  labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                  datasets: [{
+                     label: 'Total Student Study Hours',
+                     data: [28, 42, 35, 60, 52, 74, 68],
+                     fill: true,
+                     backgroundColor: 'rgba(255, 118, 117, 0.2)',
+                     borderColor: '#ff7675',
+                     tension: 0.35,
+                     pointRadius: 4,
+                     pointBackgroundColor: '#ff7675'
+                  }]
+               },
+               options: {
+                  responsive: true,
+                  maintainAspectRatio: false,
+                  scales: {
+                     y: {
+                        beginAtZero: true,
+                        grid: { color: 'rgba(255, 255, 255, 0.05)' },
+                        ticks: { color: '#a4b0be' }
+                     },
+                     x: {
+                        grid: { display: false },
+                        ticks: { color: '#a4b0be' }
+                     }
+                  },
+                  plugins: {
+                     legend: { display: false }
+                  }
+               }
+            });
+         }
+      }
+
+      window.addEventListener('DOMContentLoaded', initTutorCharts);
+
+      const menuBtn = document.getElementById("menu-btn");
+      const sideBar = document.querySelector(".side-bar");
+      const closeBtn = document.querySelector(".close-side-bar");
+      const toggleBtn = document.getElementById("toggle-btn");
+
+      if (menuBtn) {
+         menuBtn.onclick = () => {
+            sideBar.classList.toggle("active");
+            document.body.classList.toggle("active");
+         };
+      }
+      if (closeBtn) {
+         closeBtn.onclick = () => {
+            sideBar.classList.remove("active");
+            document.body.classList.remove("active");
+         };
+      }
+      if (toggleBtn) {
+         toggleBtn.onclick = () => {
+            document.documentElement.classList.toggle("light");
+            document.documentElement.classList.toggle("dark");
+         };
+      }
+   </script>
+</body>
+</html>

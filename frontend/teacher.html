@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Educa - Expert Teachers</title>
+
+   <!-- Google Fonts (Instrument Serif & Inter) -->
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+   <!-- Font Awesome CDN -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+
+   <!-- Core & Dedicated CSS -->
+   <link rel="stylesheet" href="css/style.css">
+   <link rel="stylesheet" href="css/teacher.css">
+</head>
+<body>
+
+   <!-- Header Area -->
+   <header class="header">
+      <section class="flex">
+         <a href="index.html" class="logo">Educa<span class="dot">.</span></a>
+
+         <!-- Floating Glass Pill Navigation Bar -->
+         <nav class="header-floating-nav">
+            <div class="header-nav-pill-group">
+               <a href="index.html#home" class="nav-pill-link">Home</a>
+               <a href="courses.html" class="nav-pill-link">Courses</a>
+               <a href="roadmap.html" class="nav-pill-link">Roadmap</a>
+               <a href="doubts.html" class="nav-pill-link">Doubts</a>
+               <a href="collab.html" class="nav-pill-link">Collab</a>
+               <a href="3D_lab.html" class="nav-pill-link">3D Lab</a>
+               <a href="courses.html" class="header-cta-pill">
+                  <span>Reserve Seat</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+               </a>
+            </div>
+         </nav>
+
+         <div class="search-form">
+            <input type="text" id="global-search" placeholder="Search courses, playlists, tutors..." maxlength="100">
+            <button class="fas fa-search" id="global-search-btn"></button>
+         </div>
+
+         <div class="icons">
+            <div id="menu-btn" class="fas fa-bars tooltip" data-tooltip="Menu"></div>
+            <div id="search-btn" class="fas fa-search tooltip" data-tooltip="Search"></div>
+            <div id="user-btn" class="fas fa-user tooltip" data-tooltip="Profile"></div>
+            <div id="toggle-btn" class="fas fa-moon tooltip" data-tooltip="Theme"></div>
+         </div>
+      </section>
+   </header>
+
+   <!-- Sidebar Navigation -->
+   <div class="side-bar">
+      <div class="close-side-bar">
+         <i class="fas fa-times"></i>
+      </div>
+
+      <div class="profile">
+         <img src="images/pic-2.jpg" alt="Student Profile" class="avatar-image">
+         <h3 class="name">John Student</h3>
+         <p class="role">Student • Level 2</p>
+         <a href="index.html#profile" class="btn primary-btn">View Profile</a>
+      </div>
+
+      <nav class="navbar">
+         <a href="index.html" class="nav-link"><i class="fas fa-home"></i><span>Home</span></a>
+         <a href="about_us.html" class="nav-link"><i class="fas fa-question"></i><span>About Us</span></a>
+         <a href="courses.html" class="nav-link"><i class="fas fa-graduation-cap"></i><span>Courses</span></a>
+         <a href="roadmap.html" class="nav-link"><i class="fas fa-route"></i><span>Skill Roadmap</span></a>
+         <a href="doubts.html" class="nav-link"><i class="fas fa-question-circle"></i><span>Doubt Nexus</span></a>
+         <a href="collab.html" class="nav-link"><i class="fas fa-users-gear"></i><span>Project Collab</span></a>
+         <a href="teacher.html" class="nav-link active"><i class="fas fa-chalkboard-user"></i><span>Teachers</span></a>
+         <a href="3D_lab.html" class="nav-link"><i class="fas fa-cubes"></i><span>3D Tech Lab</span></a>
+         <a href="tutor_area.html" class="nav-link"><i class="fas fa-chart-line"></i><span>Tutor Area</span></a>
+         <a href="contact.html" class="nav-link"><i class="fas fa-headset"></i><span>Contact Us</span></a>
+      </nav>
+   </div>
+
+   <!-- Main Teachers Content -->
+   <main class="main-container">
+      <h1 class="heading"><i class="fas fa-chalkboard-user"></i> Expert Tutors & Mentors</h1>
+
+      <!-- Search Banner -->
+      <div class="teachers-search-banner">
+         <div class="search-box">
+            <i class="fas fa-search"></i>
+            <input type="text" id="teacher-search-input" placeholder="Search tutors by name, profession or domain...">
+         </div>
+      </div>
+
+      <!-- Become a Tutor Callout -->
+      <div class="become-tutor-banner">
+         <div>
+            <h3>Inspire the Next Generation of Engineers</h3>
+            <p>Join our global educator network. Host video courses, mentor projects, and earn by teaching what you love.</p>
+         </div>
+         <a href="contact.html" class="btn secondary-btn"><i class="fas fa-arrow-right"></i> Apply to Teach</a>
+      </div>
+
+      <!-- Teachers Grid -->
+      <div class="teachers-grid" id="teachers-container">
+         <!-- Teacher 1 -->
+         <div class="teacher-card">
+            <div>
+               <div class="teacher-avatar-wrap">
+                  <img src="images/pic-1.jpg" alt="Dev Sarah">
+                  <span class="teacher-verified-badge"><i class="fas fa-check"></i></span>
+               </div>
+               <h3>Dev Sarah</h3>
+               <p class="profession">Senior Frontend Architect</p>
+               <div class="teacher-stats-row">
+                  <div class="t-stat">
+                     <h4>4</h4>
+                     <p>Playlists</p>
+                  </div>
+                  <div class="t-stat">
+                     <h4>48</h4>
+                     <p>Videos</p>
+                  </div>
+                  <div class="t-stat">
+                     <h4>1.2k</h4>
+                     <p>Likes</p>
+                  </div>
+               </div>
+            </div>
+            <a href="index.html#tutor?id=tut-1" class="btn primary-btn"><i class="fas fa-user"></i> View Profile</a>
+         </div>
+
+         <!-- Teacher 2 -->
+         <div class="teacher-card">
+            <div>
+               <div class="teacher-avatar-wrap">
+                  <img src="images/pic-3.jpg" alt="Carlos Ortega">
+                  <span class="teacher-verified-badge"><i class="fas fa-check"></i></span>
+               </div>
+               <h3>Carlos Ortega</h3>
+               <p class="profession">Full-Stack Cloud Engineer</p>
+               <div class="teacher-stats-row">
+                  <div class="t-stat">
+                     <h4>6</h4>
+                     <p>Playlists</p>
+                  </div>
+                  <div class="t-stat">
+                     <h4>62</h4>
+                     <p>Videos</p>
+                  </div>
+                  <div class="t-stat">
+                     <h4>2.4k</h4>
+                     <p>Likes</p>
+                  </div>
+               </div>
+            </div>
+            <a href="index.html#tutor?id=tut-2" class="btn primary-btn"><i class="fas fa-user"></i> View Profile</a>
+         </div>
+
+         <!-- Teacher 3 -->
+         <div class="teacher-card">
+            <div>
+               <div class="teacher-avatar-wrap">
+                  <img src="images/pic-4.jpg" alt="Dr. Aris Thorne">
+                  <span class="teacher-verified-badge"><i class="fas fa-check"></i></span>
+               </div>
+               <h3>Dr. Aris Thorne</h3>
+               <p class="profession">Algorithms & AI Researcher</p>
+               <div class="teacher-stats-row">
+                  <div class="t-stat">
+                     <h4>5</h4>
+                     <p>Playlists</p>
+                  </div>
+                  <div class="t-stat">
+                     <h4>55</h4>
+                     <p>Videos</p>
+                  </div>
+                  <div class="t-stat">
+                     <h4>3.1k</h4>
+                     <p>Likes</p>
+                  </div>
+               </div>
+            </div>
+            <a href="index.html#tutor?id=tut-3" class="btn primary-btn"><i class="fas fa-user"></i> View Profile</a>
+         </div>
+
+         <!-- Teacher 4 -->
+         <div class="teacher-card">
+            <div>
+               <div class="teacher-avatar-wrap">
+                  <img src="images/pic-5.jpg" alt="Maya Lin">
+                  <span class="teacher-verified-badge"><i class="fas fa-check"></i></span>
+               </div>
+               <h3>Maya Lin</h3>
+               <p class="profession">React & State Architecture Lead</p>
+               <div class="teacher-stats-row">
+                  <div class="t-stat">
+                     <h4>3</h4>
+                     <p>Playlists</p>
+                  </div>
+                  <div class="t-stat">
+                     <h4>36</h4>
+                     <p>Videos</p>
+                  </div>
+                  <div class="t-stat">
+                     <h4>980</h4>
+                     <p>Likes</p>
+                  </div>
+               </div>
+            </div>
+            <a href="index.html#tutor?id=tut-4" class="btn primary-btn"><i class="fas fa-user"></i> View Profile</a>
+         </div>
+
+         <!-- Teacher 5 -->
+         <div class="teacher-card">
+            <div>
+               <div class="teacher-avatar-wrap">
+                  <img src="images/pic-6.jpg" alt="Ben Carter">
+                  <span class="teacher-verified-badge"><i class="fas fa-check"></i></span>
+               </div>
+               <h3>Ben Carter</h3>
+               <p class="profession">Database Specialist & DBA</p>
+               <div class="teacher-stats-row">
+                  <div class="t-stat">
+                     <h4>5</h4>
+                     <p>Playlists</p>
+                  </div>
+                  <div class="t-stat">
+                     <h4>50</h4>
+                     <p>Videos</p>
+                  </div>
+                  <div class="t-stat">
+                     <h4>1.8k</h4>
+                     <p>Likes</p>
+                  </div>
+               </div>
+            </div>
+            <a href="index.html#tutor?id=tut-5" class="btn primary-btn"><i class="fas fa-user"></i> View Profile</a>
+         </div>
+
+         <!-- Teacher 6 -->
+         <div class="teacher-card">
+            <div>
+               <div class="teacher-avatar-wrap">
+                  <img src="images/pic-7.jpg" alt="Elena Rostova">
+                  <span class="teacher-verified-badge"><i class="fas fa-check"></i></span>
+               </div>
+               <h3>Elena Rostova</h3>
+               <p class="profession">Head of UI/UX & Design Systems</p>
+               <div class="teacher-stats-row">
+                  <div class="t-stat">
+                     <h4>4</h4>
+                     <p>Playlists</p>
+                  </div>
+                  <div class="t-stat">
+                     <h4>42</h4>
+                     <p>Videos</p>
+                  </div>
+                  <div class="t-stat">
+                     <h4>1.5k</h4>
+                     <p>Likes</p>
+                  </div>
+               </div>
+            </div>
+            <a href="index.html#tutor?id=tut-6" class="btn primary-btn"><i class="fas fa-user"></i> View Profile</a>
+         </div>
+      </div>
+   </main>
+
+   <!-- Footer Section -->
+   <footer class="footer">
+      &copy; 2026 <span>Educa</span> | All Rights Reserved. Designed for next-gen education.
+   </footer>
+
+   <script>
+      const menuBtn = document.getElementById("menu-btn");
+      const sideBar = document.querySelector(".side-bar");
+      const closeBtn = document.querySelector(".close-side-bar");
+      const toggleBtn = document.getElementById("toggle-btn");
+
+      if (menuBtn) {
+         menuBtn.onclick = () => {
+            sideBar.classList.toggle("active");
+            document.body.classList.toggle("active");
+         };
+      }
+      if (closeBtn) {
+         closeBtn.onclick = () => {
+            sideBar.classList.remove("active");
+            document.body.classList.remove("active");
+         };
+      }
+      if (toggleBtn) {
+         toggleBtn.onclick = () => {
+            document.documentElement.classList.toggle("light");
+            document.documentElement.classList.toggle("dark");
+         };
+      }
+
+      // Teacher search filter
+      const searchInput = document.getElementById("teacher-search-input");
+      const cards = document.querySelectorAll(".teacher-card");
+
+      if (searchInput) {
+         searchInput.addEventListener("input", () => {
+            const query = searchInput.value.toLowerCase().trim();
+            cards.forEach(card => {
+               const text = card.textContent.toLowerCase();
+               card.style.display = !query || text.includes(query) ? "flex" : "none";
+            });
+         });
+      }
+   </script>
+</body>
+</html>

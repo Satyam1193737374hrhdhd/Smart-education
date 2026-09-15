@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Educa - Peer Doubt-Solving Nexus</title>
+
+   <!-- Google Fonts (Instrument Serif & Inter) -->
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+   <!-- Font Awesome CDN -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+
+   <!-- Core & Dedicated CSS -->
+   <link rel="stylesheet" href="css/style.css">
+   <link rel="stylesheet" href="css/doubts.css">
+</head>
+<body>
+
+   <!-- Notification Toast -->
+   <div id="toast" class="toast"></div>
+
+   <!-- Header Area -->
+   <header class="header">
+      <section class="flex">
+         <a href="index.html" class="logo">Educa<span class="dot">.</span></a>
+
+         <!-- Floating Glass Pill Navigation Bar -->
+         <nav class="header-floating-nav">
+            <div class="header-nav-pill-group">
+               <a href="index.html#home" class="nav-pill-link">Home</a>
+               <a href="courses.html" class="nav-pill-link">Courses</a>
+               <a href="roadmap.html" class="nav-pill-link">Roadmap</a>
+               <a href="doubts.html" class="nav-pill-link active">Doubts</a>
+               <a href="collab.html" class="nav-pill-link">Collab</a>
+               <a href="3D_lab.html" class="nav-pill-link">3D Lab</a>
+               <a href="courses.html" class="header-cta-pill">
+                  <span>Reserve Seat</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+               </a>
+            </div>
+         </nav>
+
+         <div class="search-form">
+            <input type="text" id="global-search" placeholder="Search courses, playlists, tutors..." maxlength="100">
+            <button class="fas fa-search" id="global-search-btn"></button>
+         </div>
+
+         <div class="icons">
+            <div class="lang-selector-container">
+               <i class="fas fa-language tooltip" data-tooltip="Language"></i>
+               <select id="lang-selector" onchange="changeLanguage(this.value)">
+                  <option value="en">English (EN)</option>
+                  <option value="hi">हिन्दी (HI)</option>
+                  <option value="es">Español (ES)</option>
+                  <option value="ta">தமிழ் (TA)</option>
+               </select>
+            </div>
+            <div id="menu-btn" class="fas fa-bars tooltip" data-tooltip="Menu"></div>
+            <div id="search-btn" class="fas fa-search tooltip" data-tooltip="Search"></div>
+            <div id="user-btn" class="fas fa-user tooltip" data-tooltip="Profile"></div>
+            <div id="toggle-btn" class="fas fa-moon tooltip" data-tooltip="Theme"></div>
+         </div>
+      </section>
+   </header>
+
+   <!-- Sidebar Navigation -->
+   <div class="side-bar">
+      <div class="close-side-bar">
+         <i class="fas fa-times"></i>
+      </div>
+
+      <div class="profile">
+         <img src="images/pic-2.jpg" alt="Student Profile" class="avatar-image">
+         <h3 class="name">John Student</h3>
+         <p class="role">Student • Level 2</p>
+         <a href="index.html#profile" class="btn primary-btn">View Profile</a>
+      </div>
+
+      <nav class="navbar">
+         <a href="index.html" class="nav-link"><i class="fas fa-home"></i><span>Home</span></a>
+         <a href="about_us.html" class="nav-link"><i class="fas fa-question"></i><span>About Us</span></a>
+         <a href="courses.html" class="nav-link"><i class="fas fa-graduation-cap"></i><span>Courses</span></a>
+         <a href="roadmap.html" class="nav-link"><i class="fas fa-route"></i><span>Skill Roadmap</span></a>
+         <a href="doubts.html" class="nav-link active"><i class="fas fa-question-circle"></i><span>Doubt Nexus</span></a>
+         <a href="collab.html" class="nav-link"><i class="fas fa-users-gear"></i><span>Project Collab</span></a>
+         <a href="teacher.html" class="nav-link"><i class="fas fa-chalkboard-user"></i><span>Teachers</span></a>
+         <a href="3D_lab.html" class="nav-link"><i class="fas fa-cubes"></i><span>3D Tech Lab</span></a>
+         <a href="tutor_area.html" class="nav-link"><i class="fas fa-chart-line"></i><span>Tutor Area</span></a>
+         <a href="contact.html" class="nav-link"><i class="fas fa-headset"></i><span>Contact Us</span></a>
+      </nav>
+   </div>
+
+   <!-- Main Doubt Nexus Workspace -->
+   <main class="main-container">
+      <h1 class="heading"><i class="fas fa-question-circle"></i> Peer Doubt-Solving Nexus</h1>
+
+      <!-- Action & Search Strip -->
+      <div class="doubts-header-bar">
+         <div class="doubts-search-group">
+            <i class="fas fa-search"></i>
+            <input type="text" id="doubt-search-input" placeholder="Search doubts by title, question or keyword..." oninput="handleDoubtSearch(this.value)">
+         </div>
+         <button class="btn primary-btn" onclick="openAskDoubtModal()"><i class="fas fa-plus"></i> Ask a Doubt (+Bounty)</button>
+      </div>
+
+      <!-- Tag Pills Filter Strip -->
+      <div class="doubt-tag-filter-bar" id="doubt-tag-filters">
+         <!-- Dynamic tags populated by renderDoubts() -->
+      </div>
+
+      <!-- AI Instant Concept Explainer Feature Banner -->
+      <div class="ai-explainer-banner">
+         <div class="ai-badge"><i class="fas fa-sparkles"></i> AI Instant Co-Pilot</div>
+         <div class="ai-content">
+            <h4>Need instant clarity before community answers?</h4>
+            <p>Our peer portal instantly matches student doubts with key course lectures, interactive 3D lab modules, and smart code hints.</p>
+         </div>
+         <button class="btn secondary-btn" onclick="triggerAIDoubtHelper()"><i class="fas fa-wand-magic-sparkles"></i> Quick Explainer</button>
+      </div>
+
+      <!-- Doubts List Feed -->
+      <div class="doubts-feed" id="doubts-feed-container">
+         <!-- Dynamic questions and answer threads -->
+      </div>
+
+      <!-- Ask Doubt Modal -->
+      <div class="modal-backdrop" id="ask-doubt-modal">
+         <div class="modal-card">
+            <div class="modal-header">
+               <h3><i class="fas fa-pen-fancy"></i> Post an Academic Doubt</h3>
+               <button class="close-modal-btn" onclick="closeAskDoubtModal()"><i class="fas fa-times"></i></button>
+            </div>
+            <form id="ask-doubt-form" onsubmit="handleAskDoubtSubmit(event)">
+               <p class="form-label">Question Title *</p>
+               <input type="text" id="doubt-title" class="box" placeholder="e.g. Why does async/await return a Promise in ES6?" required>
+               
+               <div class="form-row-2">
+                  <div>
+                     <p class="form-label">Topic Category *</p>
+                     <select id="doubt-tag" class="box" required>
+                        <option value="JavaScript">JavaScript</option>
+                        <option value="React">React</option>
+                        <option value="Python">Python</option>
+                        <option value="Database">Database & SQL</option>
+                        <option value="Algorithms">Data Structures & Algo</option>
+                        <option value="CSS">CSS & Responsive Design</option>
+                     </select>
+                  </div>
+                  <div>
+                     <p class="form-label">XP Bounty for Accepted Answer</p>
+                     <select id="doubt-bounty" class="box">
+                        <option value="25">25 XP (Standard)</option>
+                        <option value="50" selected>50 XP (High Priority)</option>
+                        <option value="100">100 XP (Urgent Bounty)</option>
+                     </select>
+                  </div>
+               </div>
+
+               <p class="form-label">Doubt Explanation *</p>
+               <textarea id="doubt-desc" class="box" rows="4" placeholder="Explain what you are trying to achieve and where you are stuck..." required></textarea>
+
+               <p class="form-label">Code Snippet (Optional)</p>
+               <textarea id="doubt-code" class="box code-font" rows="4" placeholder="// Paste relevant code here..."></textarea>
+
+               <div class="modal-actions">
+                  <button type="button" class="btn option-btn" onclick="closeAskDoubtModal()">Cancel</button>
+                  <button type="submit" class="btn primary-btn"><i class="fas fa-paper-plane"></i> Publish Doubt</button>
+               </div>
+            </form>
+         </div>
+      </div>
+   </main>
+
+   <!-- Footer Section -->
+   <footer class="footer">
+      &copy; 2026 <span>Educa</span> | All Rights Reserved. Designed for next-gen education.
+   </footer>
+
+   <!-- Global Logic & Standalone Initialization -->
+   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+   <script src="supabase-client.js"></script>
+   <script src="script.js"></script>
+   <script>
+      window.addEventListener('DOMContentLoaded', () => {
+         renderDoubts();
+      });
+   </script>
+</body>
+</html>

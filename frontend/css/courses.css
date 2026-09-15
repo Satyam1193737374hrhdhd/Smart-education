@@ -1,0 +1,194 @@
+/* ==========================================================================
+   Educa - Courses Catalogue Styles
+   ========================================================================== */
+
+.courses-header-banner {
+   background: var(--panel-bg);
+   border: 1px solid var(--panel-border);
+   border-radius: var(--border-radius-lg);
+   padding: 2rem;
+   margin-bottom: 2rem;
+   box-shadow: var(--panel-shadow);
+   backdrop-filter: blur(10px);
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   flex-wrap: wrap;
+   gap: 1.5rem;
+}
+
+.courses-banner-text h2 {
+   font-family: var(--font-serif);
+   font-size: 2.3rem;
+   font-weight: 400;
+   color: var(--text-main);
+   margin-bottom: 0.5rem;
+   letter-spacing: -0.3px;
+}
+
+.courses-banner-text p {
+   color: var(--text-muted);
+   font-size: 0.95rem;
+}
+
+.filter-controls {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   flex-wrap: wrap;
+   gap: 1.5rem;
+   margin-bottom: 2.5rem;
+}
+
+.filter-controls .search-box {
+   flex: 1;
+   min-width: 280px;
+   display: flex;
+   align-items: center;
+   background: var(--input-bg);
+   border: 1px solid var(--input-border);
+   border-radius: 30px;
+   padding: 0.6rem 1.2rem;
+   gap: 0.8rem;
+}
+
+.filter-controls .search-box input {
+   flex: 1;
+   background: transparent;
+   color: var(--text-main);
+   font-size: 0.95rem;
+}
+
+.filter-controls .search-box i {
+   color: var(--text-muted);
+}
+
+.filter-controls .dropdown-filter select {
+   background: var(--input-bg);
+   border: 1px solid var(--input-border);
+   border-radius: 30px;
+   color: var(--text-main);
+   padding: 0.7rem 1.4rem;
+   font-size: 0.95rem;
+   cursor: pointer;
+}
+
+.courses-grid {
+   display: grid;
+   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+   gap: 2rem;
+}
+
+.course-card {
+   background: var(--panel-bg);
+   border: 1px solid var(--panel-border);
+   border-radius: var(--border-radius-lg);
+   padding: 1.6rem;
+   box-shadow: var(--panel-shadow);
+   transition: var(--transition);
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between;
+   backdrop-filter: blur(10px);
+}
+
+.course-card:hover {
+   transform: translateY(-5px);
+   border-color: rgba(112, 72, 232, 0.4);
+   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+}
+
+.course-tutor {
+   display: flex;
+   align-items: center;
+   gap: 1rem;
+   margin-bottom: 1.2rem;
+}
+
+.course-tutor img {
+   width: 44px;
+   height: 44px;
+   border-radius: 50%;
+   object-fit: cover;
+   border: 2px solid var(--primary-color);
+}
+
+.course-tutor-info h4 {
+   font-size: 1rem;
+   font-weight: 600;
+   color: var(--text-main);
+}
+
+.course-tutor-info span {
+   font-size: 0.8rem;
+   color: var(--text-muted);
+}
+
+.course-thumb-wrap {
+   position: relative;
+   border-radius: var(--border-radius-md);
+   overflow: hidden;
+   margin-bottom: 1.2rem;
+   background: #000;
+}
+
+.course-thumb-wrap img {
+   width: 100%;
+   height: 190px;
+   object-fit: cover;
+   transition: transform 0.4s ease;
+}
+
+.course-card:hover .course-thumb-wrap img {
+   transform: scale(1.05);
+}
+
+.course-video-count {
+   position: absolute;
+   bottom: 10px;
+   left: 10px;
+   background: rgba(0, 0, 0, 0.75);
+   color: #fff;
+   font-size: 0.75rem;
+   font-weight: 600;
+   padding: 0.3rem 0.6rem;
+   border-radius: 4px;
+   display: flex;
+   align-items: center;
+   gap: 0.3rem;
+}
+
+.course-meta-tags {
+   display: flex;
+   gap: 0.4rem;
+   margin-bottom: 0.8rem;
+}
+
+.course-tag {
+   background: rgba(112, 72, 232, 0.15);
+   color: #a55eea;
+   font-size: 0.75rem;
+   font-weight: 600;
+   padding: 0.2rem 0.5rem;
+   border-radius: 4px;
+}
+
+.course-card h3 {
+   font-size: 1.25rem;
+   font-weight: 700;
+   color: var(--text-main);
+   margin-bottom: 0.8rem;
+   line-height: 1.4;
+}
+
+.course-card-actions {
+   display: flex;
+   align-items: center;
+   gap: 0.8rem;
+   margin-top: 1rem;
+}
+
+.course-card-actions .btn {
+   flex: 1;
+   text-align: center;
+}

@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Educa - Our Courses</title>
+
+   <!-- Google Fonts (Instrument Serif & Inter) -->
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+   <!-- Font Awesome CDN -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+
+   <!-- Core & Dedicated CSS -->
+   <link rel="stylesheet" href="css/style.css">
+   <link rel="stylesheet" href="css/courses.css">
+</head>
+<body>
+
+   <!-- Notification Toast -->
+   <div id="toast" class="toast"></div>
+
+   <!-- Header Area -->
+   <header class="header">
+      <section class="flex">
+         <a href="index.html" class="logo">Educa<span class="dot">.</span></a>
+
+         <!-- Floating Glass Pill Navigation Bar -->
+         <nav class="header-floating-nav">
+            <div class="header-nav-pill-group">
+               <a href="index.html#home" class="nav-pill-link">Home</a>
+               <a href="courses.html" class="nav-pill-link active">Courses</a>
+               <a href="roadmap.html" class="nav-pill-link">Roadmap</a>
+               <a href="doubts.html" class="nav-pill-link">Doubts</a>
+               <a href="collab.html" class="nav-pill-link">Collab</a>
+               <a href="3D_lab.html" class="nav-pill-link">3D Lab</a>
+               <a href="courses.html" class="header-cta-pill">
+                  <span>Reserve Seat</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+               </a>
+            </div>
+         </nav>
+
+         <div class="search-form">
+            <input type="text" id="global-search" placeholder="Search courses, playlists, tutors..." maxlength="100">
+            <button class="fas fa-search" id="global-search-btn"></button>
+         </div>
+
+         <div class="icons">
+            <div id="menu-btn" class="fas fa-bars tooltip" data-tooltip="Menu"></div>
+            <div id="search-btn" class="fas fa-search tooltip" data-tooltip="Search"></div>
+            <div id="user-btn" class="fas fa-user tooltip" data-tooltip="Profile"></div>
+            <div id="toggle-btn" class="fas fa-moon tooltip" data-tooltip="Theme"></div>
+         </div>
+      </section>
+   </header>
+
+   <!-- Sidebar Navigation -->
+   <div class="side-bar">
+      <div class="close-side-bar">
+         <i class="fas fa-times"></i>
+      </div>
+
+      <div class="profile">
+         <img src="images/pic-2.jpg" alt="Student Profile" class="avatar-image">
+         <h3 class="name">John Student</h3>
+         <p class="role">Student • Level 2</p>
+         <a href="index.html#profile" class="btn primary-btn">View Profile</a>
+      </div>
+
+      <nav class="navbar">
+         <a href="index.html" class="nav-link"><i class="fas fa-home"></i><span>Home</span></a>
+         <a href="about_us.html" class="nav-link"><i class="fas fa-question"></i><span>About Us</span></a>
+         <a href="courses.html" class="nav-link active"><i class="fas fa-graduation-cap"></i><span>Courses</span></a>
+         <a href="roadmap.html" class="nav-link"><i class="fas fa-route"></i><span>Skill Roadmap</span></a>
+         <a href="doubts.html" class="nav-link"><i class="fas fa-question-circle"></i><span>Doubt Nexus</span></a>
+         <a href="collab.html" class="nav-link"><i class="fas fa-users-gear"></i><span>Project Collab</span></a>
+         <a href="teacher.html" class="nav-link"><i class="fas fa-chalkboard-user"></i><span>Teachers</span></a>
+         <a href="3D_lab.html" class="nav-link"><i class="fas fa-cubes"></i><span>3D Tech Lab</span></a>
+         <a href="tutor_area.html" class="nav-link"><i class="fas fa-chart-line"></i><span>Tutor Area</span></a>
+         <a href="contact.html" class="nav-link"><i class="fas fa-headset"></i><span>Contact Us</span></a>
+      </nav>
+   </div>
+
+   <!-- Main Courses Content -->
+   <main class="main-container">
+      <div class="courses-header-banner">
+         <div class="courses-banner-text">
+            <h2><i class="fas fa-graduation-cap" style="color: var(--primary-color);"></i> Course Catalogue</h2>
+            <p>Explore comprehensive pathways from industry experts in software development, design, and AI.</p>
+         </div>
+         <div class="badge-status-pill">
+            <span><i class="fas fa-book-open"></i> 8+ Curated Playlists</span>
+         </div>
+      </div>
+
+      <div class="filter-controls">
+         <div class="search-box">
+            <i class="fas fa-search"></i>
+            <input type="text" id="course-filter-search" placeholder="Search by course title, keywords, or instructor...">
+         </div>
+         <div class="dropdown-filter">
+            <select id="course-filter-category">
+               <option value="all">All Categories</option>
+               <option value="development">Development</option>
+               <option value="design">Design & UI/UX</option>
+               <option value="software">Software & AI</option>
+               <option value="business">Business</option>
+            </select>
+         </div>
+      </div>
+
+      <div class="courses-grid" id="all-courses-container">
+         <!-- Course 1 -->
+         <div class="course-card">
+            <div>
+               <div class="course-tutor">
+                  <img src="images/pic-1.jpg" alt="Tutor">
+                  <div class="course-tutor-info">
+                     <h4>Dev Sarah</h4>
+                     <span>Senior Web Engineer</span>
+                  </div>
+               </div>
+               <div class="course-thumb-wrap">
+                  <img src="images/thumb-1.png" alt="HTML5 Masterclass">
+                  <span class="course-video-count"><i class="fas fa-play-circle"></i> 10 Videos</span>
+               </div>
+               <div class="course-meta-tags">
+                  <span class="course-tag">Development</span>
+                  <span class="course-tag">HTML5 / CSS3</span>
+               </div>
+               <h3>Complete HTML5 & Modern Layouts Masterclass</h3>
+            </div>
+            <div class="course-card-actions">
+               <a href="index.html#playlist?id=play-1" class="btn primary-btn"><i class="fas fa-play"></i> View Playlist</a>
+            </div>
+         </div>
+
+         <!-- Course 2 -->
+         <div class="course-card">
+            <div>
+               <div class="course-tutor">
+                  <img src="images/pic-3.jpg" alt="Tutor">
+                  <div class="course-tutor-info">
+                     <h4>Carlos Ortega</h4>
+                     <span>Full-Stack Architect</span>
+                  </div>
+               </div>
+               <div class="course-thumb-wrap">
+                  <img src="images/thumb-2.png" alt="CSS Grid & Flexbox">
+                  <span class="course-video-count"><i class="fas fa-play-circle"></i> 8 Videos</span>
+               </div>
+               <div class="course-meta-tags">
+                  <span class="course-tag">Development</span>
+                  <span class="course-tag">CSS Systems</span>
+               </div>
+               <h3>CSS Grid, Flexbox & Responsive Design Systems</h3>
+            </div>
+            <div class="course-card-actions">
+               <a href="index.html#playlist?id=play-2" class="btn primary-btn"><i class="fas fa-play"></i> View Playlist</a>
+            </div>
+         </div>
+
+         <!-- Course 3 -->
+         <div class="course-card">
+            <div>
+               <div class="course-tutor">
+                  <img src="images/pic-4.jpg" alt="Tutor">
+                  <div class="course-tutor-info">
+                     <h4>Dr. Aris Thorne</h4>
+                     <span>Algorithms Researcher</span>
+                  </div>
+               </div>
+               <div class="course-thumb-wrap">
+                  <img src="images/thumb-3.png" alt="JavaScript ES6">
+                  <span class="course-video-count"><i class="fas fa-play-circle"></i> 15 Videos</span>
+               </div>
+               <div class="course-meta-tags">
+                  <span class="course-tag">Development</span>
+                  <span class="course-tag">JavaScript</span>
+               </div>
+               <h3>Modern JavaScript ES6+ & Asynchronous Workflows</h3>
+            </div>
+            <div class="course-card-actions">
+               <a href="index.html#playlist?id=play-3" class="btn primary-btn"><i class="fas fa-play"></i> View Playlist</a>
+            </div>
+         </div>
+
+         <!-- Course 4 -->
+         <div class="course-card">
+            <div>
+               <div class="course-tutor">
+                  <img src="images/pic-5.jpg" alt="Tutor">
+                  <div class="course-tutor-info">
+                     <h4>Maya Lin</h4>
+                     <span>Frontend Specialist</span>
+                  </div>
+               </div>
+               <div class="course-thumb-wrap">
+                  <img src="images/thumb-4.png" alt="React & Hooks">
+                  <span class="course-video-count"><i class="fas fa-play-circle"></i> 12 Videos</span>
+               </div>
+               <div class="course-meta-tags">
+                  <span class="course-tag">Development</span>
+                  <span class="course-tag">React.js</span>
+               </div>
+               <h3>React.js & State Management Architecture</h3>
+            </div>
+            <div class="course-card-actions">
+               <a href="index.html#playlist?id=play-4" class="btn primary-btn"><i class="fas fa-play"></i> View Playlist</a>
+            </div>
+         </div>
+
+         <!-- Course 5 -->
+         <div class="course-card">
+            <div>
+               <div class="course-tutor">
+                  <img src="images/pic-6.jpg" alt="Tutor">
+                  <div class="course-tutor-info">
+                     <h4>Ben Carter</h4>
+                     <span>Database Admin</span>
+                  </div>
+               </div>
+               <div class="course-thumb-wrap">
+                  <img src="images/thumb-5.png" alt="PHP & MySQL">
+                  <span class="course-video-count"><i class="fas fa-play-circle"></i> 14 Videos</span>
+               </div>
+               <div class="course-meta-tags">
+                  <span class="course-tag">Backend</span>
+                  <span class="course-tag">PHP / SQL</span>
+               </div>
+               <h3>PHP & MySQL Database Design and Security</h3>
+            </div>
+            <div class="course-card-actions">
+               <a href="index.html#playlist?id=play-5" class="btn primary-btn"><i class="fas fa-play"></i> View Playlist</a>
+            </div>
+         </div>
+
+         <!-- Course 6 -->
+         <div class="course-card">
+            <div>
+               <div class="course-tutor">
+                  <img src="images/pic-7.jpg" alt="Tutor">
+                  <div class="course-tutor-info">
+                     <h4>Elena Rostova</h4>
+                     <span>Design Lead</span>
+                  </div>
+               </div>
+               <div class="course-thumb-wrap">
+                  <img src="images/thumb-6.png" alt="UI/UX Design">
+                  <span class="course-video-count"><i class="fas fa-play-circle"></i> 9 Videos</span>
+               </div>
+               <div class="course-meta-tags">
+                  <span class="course-tag">Design</span>
+                  <span class="course-tag">Figma / UX</span>
+               </div>
+               <h3>UI/UX Design Masterclass: From Wireframes to High-Fidelity</h3>
+            </div>
+            <div class="course-card-actions">
+               <a href="index.html#playlist?id=play-6" class="btn primary-btn"><i class="fas fa-play"></i> View Playlist</a>
+            </div>
+         </div>
+      </div>
+   </main>
+
+   <!-- Footer Section -->
+   <footer class="footer">
+      &copy; 2026 <span>Educa</span> | All Rights Reserved. Designed for next-gen education.
+   </footer>
+
+   <script>
+      // Sidebar & Theme toggle handlers for standalone page
+      const menuBtn = document.getElementById("menu-btn");
+      const sideBar = document.querySelector(".side-bar");
+      const closeBtn = document.querySelector(".close-side-bar");
+      const toggleBtn = document.getElementById("toggle-btn");
+
+      if (menuBtn) {
+         menuBtn.onclick = () => {
+            sideBar.classList.toggle("active");
+            document.body.classList.toggle("active");
+         };
+      }
+      if (closeBtn) {
+         closeBtn.onclick = () => {
+            sideBar.classList.remove("active");
+            document.body.classList.remove("active");
+         };
+      }
+      if (toggleBtn) {
+         toggleBtn.onclick = () => {
+            document.documentElement.classList.toggle("light");
+            document.documentElement.classList.toggle("dark");
+         };
+      }
+
+      // Live Course Search Filter
+      const searchInput = document.getElementById("course-filter-search");
+      const categorySelect = document.getElementById("course-filter-category");
+      const cards = document.querySelectorAll(".course-card");
+
+      function filterCards() {
+         const q = (searchInput.value || "").toLowerCase().trim();
+         const cat = categorySelect.value.toLowerCase();
+
+         cards.forEach(card => {
+            const text = card.textContent.toLowerCase();
+            const matchesQuery = !q || text.includes(q);
+            const matchesCategory = cat === "all" || text.includes(cat);
+            card.style.display = matchesQuery && matchesCategory ? "flex" : "none";
+         });
+      }
+
+      if (searchInput) searchInput.addEventListener("input", filterCards);
+      if (categorySelect) categorySelect.addEventListener("change", filterCards);
+   </script>
+</body>
+</html>

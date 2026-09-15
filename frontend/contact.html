@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Educa - Contact Us</title>
+
+   <!-- Google Fonts (Instrument Serif & Inter) -->
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+   <!-- Font Awesome CDN -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+
+   <!-- Core & Dedicated CSS -->
+   <link rel="stylesheet" href="css/style.css">
+   <link rel="stylesheet" href="css/contact.css">
+</head>
+<body>
+
+   <!-- Notification Toast -->
+   <div id="toast" class="toast"></div>
+
+   <!-- Header Area -->
+   <header class="header">
+      <section class="flex">
+         <a href="index.html" class="logo">Educa<span class="dot">.</span></a>
+
+         <!-- Floating Glass Pill Navigation Bar -->
+         <nav class="header-floating-nav">
+            <div class="header-nav-pill-group">
+               <a href="index.html#home" class="nav-pill-link">Home</a>
+               <a href="courses.html" class="nav-pill-link">Courses</a>
+               <a href="roadmap.html" class="nav-pill-link">Roadmap</a>
+               <a href="doubts.html" class="nav-pill-link">Doubts</a>
+               <a href="collab.html" class="nav-pill-link">Collab</a>
+               <a href="3D_lab.html" class="nav-pill-link">3D Lab</a>
+               <a href="courses.html" class="header-cta-pill">
+                  <span>Reserve Seat</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+               </a>
+            </div>
+         </nav>
+
+         <div class="search-form">
+            <input type="text" id="global-search" placeholder="Search courses, playlists, tutors..." maxlength="100">
+            <button class="fas fa-search" id="global-search-btn"></button>
+         </div>
+
+         <div class="icons">
+            <div id="menu-btn" class="fas fa-bars tooltip" data-tooltip="Menu"></div>
+            <div id="search-btn" class="fas fa-search tooltip" data-tooltip="Search"></div>
+            <div id="user-btn" class="fas fa-user tooltip" data-tooltip="Profile"></div>
+            <div id="toggle-btn" class="fas fa-moon tooltip" data-tooltip="Theme"></div>
+         </div>
+      </section>
+   </header>
+
+   <!-- Sidebar Navigation -->
+   <div class="side-bar">
+      <div class="close-side-bar">
+         <i class="fas fa-times"></i>
+      </div>
+
+      <div class="profile">
+         <img src="images/pic-2.jpg" alt="Student Profile" class="avatar-image">
+         <h3 class="name">John Student</h3>
+         <p class="role">Student • Level 2</p>
+         <a href="index.html#profile" class="btn primary-btn">View Profile</a>
+      </div>
+
+      <nav class="navbar">
+         <a href="index.html" class="nav-link"><i class="fas fa-home"></i><span>Home</span></a>
+         <a href="about_us.html" class="nav-link"><i class="fas fa-question"></i><span>About Us</span></a>
+         <a href="courses.html" class="nav-link"><i class="fas fa-graduation-cap"></i><span>Courses</span></a>
+         <a href="roadmap.html" class="nav-link"><i class="fas fa-route"></i><span>Skill Roadmap</span></a>
+         <a href="doubts.html" class="nav-link"><i class="fas fa-question-circle"></i><span>Doubt Nexus</span></a>
+         <a href="collab.html" class="nav-link"><i class="fas fa-users-gear"></i><span>Project Collab</span></a>
+         <a href="teacher.html" class="nav-link"><i class="fas fa-chalkboard-user"></i><span>Teachers</span></a>
+         <a href="3D_lab.html" class="nav-link"><i class="fas fa-cubes"></i><span>3D Tech Lab</span></a>
+         <a href="tutor_area.html" class="nav-link"><i class="fas fa-chart-line"></i><span>Tutor Area</span></a>
+         <a href="contact.html" class="nav-link active"><i class="fas fa-headset"></i><span>Contact Us</span></a>
+      </nav>
+   </div>
+
+   <!-- Main Contact Content -->
+   <main class="main-container">
+      <h1 class="heading"><i class="fas fa-headset"></i> Get In Touch with Educa Support</h1>
+
+      <div class="contact-layout-grid">
+         <!-- Contact Details Card -->
+         <div class="contact-info-card">
+            <i class="fas fa-headset head-icon"></i>
+            <h2>We're Here to Help</h2>
+            <p>Have questions about curriculum roadmaps, project collaboration, or becoming an instructor? Our academic support specialists are online 24/7.</p>
+            
+            <div class="contact-details-list">
+               <div class="contact-detail-pill">
+                  <i class="fas fa-phone"></i>
+                  <span>+1 (800) 234-5678</span>
+               </div>
+               <div class="contact-detail-pill">
+                  <i class="fas fa-envelope"></i>
+                  <span>support@educa-academy.com</span>
+               </div>
+               <div class="contact-detail-pill">
+                  <i class="fas fa-map-marker-alt"></i>
+                  <span>Tech Innovation District, Hub 4B</span>
+               </div>
+               <div class="contact-detail-pill">
+                  <i class="fas fa-clock"></i>
+                  <span>Monday – Friday: 24h Response</span>
+               </div>
+            </div>
+         </div>
+
+         <!-- Contact Form -->
+         <div class="contact-form-card">
+            <h3><i class="fas fa-paper-plane" style="color: var(--primary-color);"></i> Send Us a Direct Message</h3>
+            <form id="contact-form" onsubmit="handleContactSubmit(event)">
+               <div class="form-group">
+                  <label for="c-name">Full Name *</label>
+                  <input type="text" id="c-name" placeholder="Enter your full name" required>
+               </div>
+               <div class="form-group">
+                  <label for="c-email">Email Address *</label>
+                  <input type="email" id="c-email" placeholder="Enter your academic or personal email" required>
+               </div>
+               <div class="form-group">
+                  <label for="c-subject">Subject Inquiry *</label>
+                  <input type="text" id="c-subject" placeholder="e.g. Course enrollment, roadmap feedback, tutor application" required>
+               </div>
+               <div class="form-group">
+                  <label for="c-message">Message *</label>
+                  <textarea id="c-message" rows="5" placeholder="Detail your question or feedback..." required></textarea>
+               </div>
+               <button type="submit" class="btn primary-btn"><i class="fas fa-paper-plane"></i> Send Message</button>
+            </form>
+         </div>
+      </div>
+   </main>
+
+   <!-- Footer Section -->
+   <footer class="footer">
+      &copy; 2026 <span>Educa</span> | All Rights Reserved. Designed for next-gen education.
+   </footer>
+
+   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+   <script src="supabase-client.js"></script>
+   <script>
+      function handleContactSubmit(event) {
+         event.preventDefault();
+         const name = document.getElementById("c-name").value;
+         const email = document.getElementById("c-email").value;
+         const subject = document.getElementById("c-subject").value;
+         const message = document.getElementById("c-message").value;
+         const toast = document.getElementById("toast");
+
+         if (window.EducaBackend && window.EducaBackend.submitContactMessage) {
+            window.EducaBackend.submitContactMessage({
+               name: name,
+               email: email,
+               phone: subject,
+               message: message
+            });
+         }
+         
+         if (toast) {
+            toast.textContent = `Thank you, ${name}! Your message was sent and saved to our database.`;
+            toast.classList.add("show");
+            setTimeout(() => toast.classList.remove("show"), 3500);
+         }
+         event.target.reset();
+      }
+
+      const menuBtn = document.getElementById("menu-btn");
+      const sideBar = document.querySelector(".side-bar");
+      const closeBtn = document.querySelector(".close-side-bar");
+      const toggleBtn = document.getElementById("toggle-btn");
+
+      if (menuBtn) {
+         menuBtn.onclick = () => {
+            sideBar.classList.toggle("active");
+            document.body.classList.toggle("active");
+         };
+      }
+      if (closeBtn) {
+         closeBtn.onclick = () => {
+            sideBar.classList.remove("active");
+            document.body.classList.remove("active");
+         };
+      }
+      if (toggleBtn) {
+         toggleBtn.onclick = () => {
+            document.documentElement.classList.toggle("light");
+            document.documentElement.classList.toggle("dark");
+         };
+      }
+   </script>
+</body>
+</html>

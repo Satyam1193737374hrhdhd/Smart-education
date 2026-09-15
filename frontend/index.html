@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Edu-Verse - Smart Education Portal</title>
+
+   <!-- Google Fonts (Instrument Serif & Inter from design system) -->
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+   <!-- Font Awesome CDN -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+
+   <!-- Video.js Player CSS CDN -->
+   <link href="https://vjs.zencdn.net/7.20.3/video-js.css" rel="stylesheet" />
+
+   <!-- Custom CSS -->
+   <link rel="stylesheet" href="./css/style.css">
+
+   <!-- Core CDN Libraries: Three.js, Chart.js, Video.js, jsPDF -->
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+   <script src="https://vjs.zencdn.net/7.20.3/video.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+
+   <!-- Notification Toast -->
+   <div id="toast" class="toast"></div>
+
+   <!-- Header Area -->
+   <header class="header">
+      <section class="flex">
+         <a href="#home" class="logo">Edu-Verse<span class="dot">.</span></a>
+
+         <!-- Floating Glass Pill Navigation Bar (matching responsive-hero-banner) -->
+         <nav class="header-floating-nav">
+            <div class="header-nav-pill-group">
+               <a href="#home" class="nav-pill-link active" data-i18n="nav_home">Home</a>
+               <a href="#courses" class="nav-pill-link" data-i18n="nav_courses">Courses</a>
+               <a href="#roadmap" class="nav-pill-link" data-i18n="nav_roadmap">Roadmap</a>
+               <a href="#doubts" class="nav-pill-link" data-i18n="nav_doubts">Doubts</a>
+               <a href="#collab" class="nav-pill-link" data-i18n="nav_collab">Collab</a>
+               <a href="#labs" class="nav-pill-link" data-i18n="nav_labs">3D Lab</a>
+               <a href="#courses" class="header-cta-pill">
+                  <span>Reserve Seat</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+               </a>
+            </div>
+         </nav>
+
+         <div class="search-form">
+            <input type="text" id="global-search" data-i18n-placeholder="search_placeholder" placeholder="Search courses, playlists, tutors..." maxlength="100">
+            <button class="fas fa-search" id="global-search-btn"></button>
+         </div>
+
+         <div class="icons">
+            <!-- Language Selector Dropdown -->
+            <div class="lang-selector-container">
+               <i class="fas fa-language tooltip" data-tooltip="Language"></i>
+               <select id="lang-selector" onchange="changeLanguage(this.value)">
+                  <option value="en">English (EN)</option>
+                  <option value="hi">हिन्दी (HI)</option>
+                  <option value="es">Español (ES)</option>
+                  <option value="ta">தமிழ் (TA)</option>
+               </select>
+            </div>
+            
+            <div id="menu-btn" class="fas fa-bars tooltip" data-tooltip="Menu"></div>
+            <div id="search-btn" class="fas fa-search tooltip" data-tooltip="Search"></div>
+            <div id="user-btn" class="fas fa-user tooltip" data-tooltip="Profile"></div>
+            <div id="toggle-btn" class="fas fa-moon tooltip" data-tooltip="Theme"></div>
+         </div>
+
+         <div class="profile-dropdown">
+            <div id="dropdown-user-info">
+               <!-- Dynamic -->
+            </div>
+         </div>
+      </section>
+   </header>
+
+   <!-- Sidebar Navigation with Gamification Metrics -->
+   <div class="side-bar">
+      <div class="close-side-bar">
+         <i class="fas fa-times"></i>
+      </div>
+
+      <!-- User profile & Gamification Card -->
+      <div class="profile" id="sidebar-profile">
+         <!-- Dynamic user info -->
+      </div>
+      
+      <div class="sidebar-gamify" id="sidebar-gamify-container">
+         <!-- Dynamic level, XP bar, streaks -->
+      </div>
+
+      <nav class="navbar">
+         <a href="#home" class="nav-link active"><i class="fas fa-home"></i><span data-i18n="nav_home">Home</span></a>
+         <a href="#about" class="nav-link"><i class="fas fa-question"></i><span data-i18n="nav_about">About Us</span></a>
+         <a href="#courses" class="nav-link"><i class="fas fa-graduation-cap"></i><span data-i18n="nav_courses">Courses</span></a>
+         <a href="#roadmap" class="nav-link"><i class="fas fa-route"></i><span data-i18n="nav_roadmap">Skill Roadmap</span></a>
+         <a href="#doubts" class="nav-link"><i class="fas fa-question-circle"></i><span data-i18n="nav_doubts">Doubt Nexus</span></a>
+         <a href="#collab" class="nav-link"><i class="fas fa-users-gear"></i><span data-i18n="nav_collab">Project Collab</span></a>
+         <a href="#teachers" class="nav-link"><i class="fas fa-chalkboard-user"></i><span data-i18n="nav_teachers">Teachers</span></a>
+         <a href="#labs" class="nav-link"><i class="fas fa-cubes"></i><span data-i18n="nav_labs">3D Tech Lab</span></a>
+         <a href="#leaderboard" class="nav-link"><i class="fas fa-trophy"></i><span data-i18n="nav_leaderboard">Leaderboard</span></a>
+         <a href="#instructor" class="nav-link"><i class="fas fa-chart-line"></i><span data-i18n="nav_instructor">Tutor Area</span></a>
+         <a href="#contact" class="nav-link"><i class="fas fa-headset"></i><span data-i18n="nav_contact">Contact Us</span></a>
+      </nav>
+   </div>
+
+   <!-- Main Layout Wrapper -->
+   <main class="main-container">
+
+      <!-- View: Home -->
+      <section id="view-home" class="app-view active">
+         <!-- Cosmic Responsive Hero Banner (UI/UX Conversion) -->
+         <div class="cosmos-hero-banner">
+            <div class="cosmos-hero-bg">
+               <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop" alt="Cosmos Background">
+               <div class="cosmos-hero-overlay"></div>
+            </div>
+
+            <div class="cosmos-hero-inner">
+               <div class="cosmos-badge-pill">
+                  <span class="badge-pill-tag">New</span>
+                  <span class="badge-pill-text" data-i18n="hero_badge">Next-Gen Adaptive Learning Platform 2026</span>
+               </div>
+
+               <h1 class="cosmos-hero-title">
+                  <span data-i18n="hero_title_1">Begin Your Learning Journey</span>
+                  <br class="hidden-xs">
+                  <span class="cosmos-hero-subtitle" data-i18n="hero_title_2">with Edu-Verse</span>
+               </h1>
+
+               <p class="cosmos-hero-desc" data-i18n="hero_desc">
+                  Experience next-gen education like never before. Advanced study roadmaps, peer-to-peer collaboration, and 3D interactive labs make mastery accessible, immersive, and unforgettable.
+               </p>
+
+               <div class="cosmos-hero-actions">
+                  <a href="#courses" class="cosmos-btn-primary">
+                     <span data-i18n="hero_btn">Book Your Journey</span>
+                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M5 12h14"></path>
+                        <path d="m12 5 7 7-7 7"></path>
+                     </svg>
+                  </a>
+                  <a href="#roadmap" class="cosmos-btn-secondary">
+                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"></path>
+                     </svg>
+                     <span>Explore Roadmap</span>
+                  </a>
+               </div>
+
+               <!-- Partners Strip -->
+               <div class="cosmos-partners-strip">
+                  <p class="partners-heading">Partnering with leading educational and research institutes worldwide</p>
+                  <div class="partners-grid">
+                     <div class="partner-card"><i class="fas fa-university"></i> MIT OpenCourse</div>
+                     <div class="partner-card"><i class="fas fa-atom"></i> CERN Science</div>
+                     <div class="partner-card"><i class="fas fa-rocket"></i> NASA Space Ed</div>
+                     <div class="partner-card"><i class="fas fa-code"></i> Stanford Code</div>
+                     <div class="partner-card"><i class="fas fa-globe"></i> Cambridge Digital</div>
+                  </div>
+               </div>
+            </div>
+         </div>
+
+         <!-- Adaptive Learning Pathway Recommendation Panel -->
+         <div class="adaptive-panel" id="adaptive-learning-container">
+            <!-- Dynamic personal pathway recommendations -->
+         </div>
+
+         <h1 class="heading" data-i18n="heading_quick">Quick Options</h1>
+         <div class="quick-options-grid">
+            <div class="box dashboard-box" id="student-quick-stats">
+               <!-- Dynamic user statistics -->
+            </div>
+
+            <div class="box categories-box">
+               <h3 class="title" data-i18n="title_categories">Top Categories</h3>
+               <div class="category-tags">
+                  <a href="#courses" class="cat-tag" data-cat="development"><i class="fas fa-code"></i><span data-i18n="cat_dev">Development</span></a>
+                  <a href="#courses" class="cat-tag" data-cat="business"><i class="fas fa-chart-simple"></i><span data-i18n="cat_bus">Business</span></a>
+                  <a href="#courses" class="cat-tag" data-cat="design"><i class="fas fa-pen"></i><span data-i18n="cat_des">Design</span></a>
+                  <a href="#courses" class="cat-tag" data-cat="marketing"><i class="fas fa-chart-line"></i><span data-i18n="cat_mkt">Marketing</span></a>
+                  <a href="#courses" class="cat-tag" data-cat="music"><i class="fas fa-music"></i><span data-i18n="cat_mus">Music</span></a>
+                  <a href="#courses" class="cat-tag" data-cat="software"><i class="fas fa-cog"></i><span data-i18n="cat_sw">Software</span></a>
+               </div>
+            </div>
+
+            <div class="box topics-box">
+               <h3 class="title" data-i18n="title_topics">Popular Topics</h3>
+               <div class="topic-tags">
+                  <a href="#courses" class="topic-tag" data-topic="HTML"><i class="fab fa-html5"></i><span>HTML</span></a>
+                  <a href="#courses" class="topic-tag" data-topic="CSS"><i class="fab fa-css3"></i><span>CSS</span></a>
+                  <a href="#courses" class="topic-tag" data-topic="JavaScript"><i class="fab fa-js"></i><span>JavaScript</span></a>
+                  <a href="#courses" class="topic-tag" data-topic="React"><i class="fab fa-react"></i><span>React</span></a>
+                  <a href="#courses" class="topic-tag" data-topic="PHP"><i class="fab fa-php"></i><span>PHP</span></a>
+                  <a href="#courses" class="topic-tag" data-topic="Database"><i class="fas fa-database"></i><span>Database</span></a>
+               </div>
+            </div>
+
+            <div class="box tutor-banner-box">
+               <h3 class="title" data-i18n="title_become_tutor">Become a Tutor</h3>
+               <p data-i18n="desc_become_tutor">Share your knowledge with the world, inspire thousands of students, and earn by teaching what you love.</p>
+               <a href="#contact" class="btn secondary-btn" data-i18n="btn_get_started">Get Started Now</a>
+            </div>
+         </div>
+
+         <h1 class="heading" data-i18n="heading_latest">Latest Courses</h1>
+         <div class="courses-grid" id="latest-courses-container">
+            <!-- Dynamic courses -->
+         </div>
+         <div class="more-btn-container">
+            <a href="#courses" class="btn option-btn"><span data-i18n="btn_view_all">View All Courses</span> <i class="fas fa-th-list"></i></a>
+         </div>
+      </section>
+
+      <!-- View: About Us -->
+      <section id="view-about" class="app-view">
+         <h1 class="heading" data-i18n="nav_about">About Us</h1>
+         <div class="about-container">
+            <div class="image">
+               <div class="about-img-placeholder">
+                  <div class="circle-graphic"></div>
+                  <i class="fas fa-graduation-cap logo-graphic"></i>
+               </div>
+            </div>
+            <div class="content">
+               <h3 data-i18n="about_why_title">Why Choose Edu-Verse?</h3>
+               <p data-i18n="about_desc_1">Edu-Verse is a leading online learning platform designed to connect passionate educators with eager learners. We offer a project-based curriculum that prepares students for modern-day careers in development, design, marketing, and more.</p>
+               <p data-i18n="about_desc_2">Our platform focuses on rich interactive video learning, student-teacher communication via video commenting, and personal progress tracking dashboards.</p>
+               <a href="#courses" class="btn primary-btn" data-i18n="about_browse">Browse Catalog</a>
+            </div>
+         </div>
+
+         <div class="stats-grid">
+            <div class="box">
+               <i class="fas fa-bookmark"></i>
+               <div>
+                  <h3>100+</h3>
+                  <p data-i18n="stat_courses">Online Courses</p>
+               </div>
+            </div>
+            <div class="box">
+               <i class="fas fa-user-graduate"></i>
+               <div>
+                  <h3>25k+</h3>
+                  <p data-i18n="stat_students">Brilliant Students</p>
+               </div>
+            </div>
+            <div class="box">
+               <i class="fas fa-chalkboard-user"></i>
+               <div>
+                  <h3>50+</h3>
+                  <p data-i18n="stat_tutors">Expert Tutors</p>
+               </div>
+            </div>
+            <div class="box">
+               <i class="fas fa-briefcase"></i>
+               <div>
+                  <h3>100%</h3>
+                  <p data-i18n="stat_career">Career-Focused</p>
+               </div>
+            </div>
+         </div>
+
+         <h1 class="heading" data-i18n="about_testimonials">Student Testimonials</h1>
+         <div class="testimonials-container">
+            <div class="box">
+               <p>"The Web Development courses on Educa are top-notch. The tutors explain complex concepts with absolute clarity, and the code examples are extremely helpful."</p>
+               <div class="student">
+                  <div class="avatar-placeholder">A</div>
+                  <div>
+                     <h3>Alice Vance</h3>
+                     <div class="stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="box">
+               <p>"I changed my career path from finance to design thanks to the UX/UI courses here. Highly recommend the playlist features to bookmark and organize your learning."</p>
+               <div class="student">
+                  <div class="avatar-placeholder">B</div>
+                  <div>
+                     <h3>Ben Carter</h3>
+                     <div class="stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="box">
+               <p>"As a self-taught React developer, Educa gave me the structured learning path I couldn't find elsewhere. The Q&A in comment sections is highly interactive."</p>
+               <div class="student">
+                  <div class="avatar-placeholder">M</div>
+                  <div>
+                     <h3>Maya Lin</h3>
+                     <div class="stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </section>
+
+      <!-- View: Courses Catalogue -->
+      <section id="view-courses" class="app-view">
+         <h1 class="heading" data-i18n="heading_courses_list">Our Courses</h1>
+         
+         <div class="filter-controls">
+            <div class="search-box">
+               <input type="text" id="course-filter-search" data-i18n-placeholder="filter_placeholder" placeholder="Search by title, description or tutor...">
+               <i class="fas fa-search"></i>
+            </div>
+            <div class="dropdown-filter">
+               <select id="course-filter-category">
+                  <option value="all" data-i18n="opt_all_cat">All Categories</option>
+                  <option value="development" data-i18n="cat_dev">Development</option>
+                  <option value="business" data-i18n="cat_bus">Business</option>
+                  <option value="design" data-i18n="cat_des">Design</option>
+                  <option value="marketing" data-i18n="cat_mkt">Marketing</option>
+                  <option value="music" data-i18n="cat_mus">Music</option>
+                  <option value="software" data-i18n="cat_sw">Software</option>
+               </select>
+            </div>
+         </div>
+
+         <div class="courses-grid" id="all-courses-container">
+            <!-- Dynamic courses list -->
+         </div>
+      </section>
+
+      <!-- View: Playlist Details -->
+      <section id="view-playlist" class="app-view">
+         <h1 class="heading" data-i18n="heading_playlist">Playlist Details</h1>
+         <div id="playlist-details-container">
+            <!-- Dynamic playlist details -->
+         </div>
+      </section>
+
+      <!-- View: Watch Video -->
+      <section id="view-watch-video" class="app-view">
+         <h1 class="heading" data-i18n="heading_watch">Watch Video</h1>
+         <div id="watch-video-container">
+            <!-- Dynamic video player, actions, comment list, post comment form -->
+         </div>
+      </section>
+
+      <!-- View: AR/VR 3D Tech Labs -->
+      <section id="view-labs" class="app-view">
+         <h1 class="heading"><i class="fas fa-cubes"></i> <span data-i18n="heading_labs">AR/VR 3D Interactive Lab</span></h1>
+         
+         <div class="lab-workspace">
+            <div class="canvas-panel">
+               <div class="canvas-header">
+                  <div class="tab-selectors">
+                     <button class="lab-tab active" onclick="switchLabSystem('nodes')">Server Node Clusters</button>
+                     <button class="lab-tab" onclick="switchLabSystem('matrix')">Code Compilation Pipelines</button>
+                  </div>
+                  <div class="canvas-controls">
+                     <button onclick="resetLabSimulation()" class="inline-option-btn"><i class="fas fa-sync-alt"></i> Reset</button>
+                     <button onclick="toggleLabAnimation()" id="lab-anim-btn" class="inline-btn"><i class="fas fa-pause"></i> Pause</button>
+                  </div>
+               </div>
+
+               <div class="canvas-viewport">
+                  <canvas id="lab-canvas" width="800" height="420"></canvas>
+                  <div class="help-overlay">
+                     <p><i class="fas fa-mouse-pointer"></i> Rotate, drag, and click nodes to test signal pathways and configurations</p>
+                  </div>
+               </div>
+            </div>
+
+            <div class="inspector-panel">
+               <h3><i class="fas fa-terminal"></i> Node Inspector</h3>
+               <div id="inspector-content">
+                  <div class="initial-msg">Click on any network element inside the 3D grid viewport to inspect and configure diagnostics.</div>
+               </div>
+            </div>
+         </div>
+      </section>
+
+      <!-- View: Leaderboard -->
+      <section id="view-leaderboard" class="app-view">
+         <h1 class="heading"><i class="fas fa-trophy"></i> <span data-i18n="heading_leaderboard">Global Student Leaderboard</span></h1>
+         <div class="leaderboard-container">
+            <div class="leaderboard-header">
+               <div class="header-col">Rank</div>
+               <div class="header-col">Student</div>
+               <div class="header-col">Level</div>
+               <div class="header-col">XP Points</div>
+               <div class="header-col">Daily Streak</div>
+            </div>
+            <div class="leaderboard-list" id="leaderboard-items">
+               <!-- Dynamic rankings list -->
+            </div>
+         </div>
+      </section>
+
+      <!-- View: Skill Roadmap & Study Planner -->
+      <section id="view-roadmap" class="app-view">
+         <h1 class="heading"><i class="fas fa-route"></i> <span data-i18n="heading_roadmap">Skill Roadmap & Adaptive Study Planner</span></h1>
+         
+         <!-- Track Switcher & Metrics Banner -->
+         <div class="roadmap-header-banner">
+            <div class="track-selector-group">
+               <span class="track-label"><i class="fas fa-compass"></i> Career Pathway:</span>
+               <div class="track-buttons" id="roadmap-track-buttons">
+                  <!-- Dynamic track buttons -->
+               </div>
+            </div>
+            <div class="roadmap-stats-strip">
+               <div class="rm-stat-card">
+                  <i class="fas fa-check-circle" style="color: #2ed573;"></i>
+                  <div>
+                     <h4 id="rm-stat-completed">0 / 0</h4>
+                     <p>Milestones Done</p>
+                  </div>
+               </div>
+               <div class="rm-stat-card">
+                  <i class="fas fa-bolt" style="color: #ffa502;"></i>
+                  <div>
+                     <h4 id="rm-stat-xp">0 XP</h4>
+                     <p>Pathway XP</p>
+                  </div>
+               </div>
+               <div class="rm-stat-card">
+                  <i class="fas fa-percent" style="color: #7048e8;"></i>
+                  <div>
+                     <h4 id="rm-stat-progress">0%</h4>
+                     <p>Progress</p>
+                  </div>
+               </div>
+            </div>
+         </div>
+
+         <!-- Dual Workspace: Interactive Roadmap Flow & Pomodoro Study Hub -->
+         <div class="roadmap-workspace-layout">
+            <div class="roadmap-tree-panel">
+               <div class="panel-title-bar">
+                  <h3 id="current-track-title">Full-Stack Web Architect Pathway</h3>
+                  <span class="badge-status-pill" id="current-track-level">Beginner to Pro</span>
+               </div>
+               <div class="roadmap-timeline" id="roadmap-timeline-container">
+                  <!-- Dynamic milestone nodes & connector paths -->
+               </div>
+            </div>
+
+            <div class="study-planner-panel">
+               <!-- Pomodoro Focus Hub -->
+               <div class="box pomodoro-card">
+                  <div class="pomodoro-header">
+                     <h3><i class="fas fa-stopwatch"></i> Focus Study Hub</h3>
+                     <span class="pomo-mode-badge" id="pomo-mode-badge">Study Session</span>
+                  </div>
+                  <div class="pomodoro-display">
+                     <div class="pomodoro-circle">
+                        <span id="pomo-timer-text">25:00</span>
+                        <small id="pomo-sub-text">Deep Work Block</small>
+                     </div>
+                  </div>
+                  <div class="pomodoro-actions">
+                     <button id="pomo-start-btn" class="btn primary-btn" onclick="togglePomodoro()"><i class="fas fa-play"></i> Start Focus</button>
+                     <button id="pomo-reset-btn" class="btn option-btn" onclick="resetPomodoro()"><i class="fas fa-redo"></i> Reset</button>
+                  </div>
+                  <div class="pomodoro-mode-toggles">
+                     <button class="mode-btn active" onclick="setPomodoroMode('work')">25m Work</button>
+                     <button class="mode-btn" onclick="setPomodoroMode('shortBreak')">5m Break</button>
+                     <button class="mode-btn" onclick="setPomodoroMode('longBreak')">15m Rest</button>
+                  </div>
+                  <div class="pomodoro-footer-stats">
+                     <span><i class="fas fa-fire"></i> Today's Focus: <strong id="today-focus-mins">50 mins</strong></span>
+                     <span><i class="fas fa-medal"></i> +20 XP / block</span>
+                  </div>
+               </div>
+
+               <!-- Spaced Repetition Practice Checkpoints -->
+               <div class="box revision-card">
+                  <h3><i class="fas fa-brain"></i> Spaced Repetition Deck</h3>
+                  <p class="desc">Active recall checkpoints recommended for today based on your quiz retention.</p>
+                  <div class="revision-items" id="spaced-repetition-list">
+                     <!-- Dynamic revision checkpoints -->
+                  </div>
+               </div>
+            </div>
+         </div>
+      </section>
+
+      <!-- View: Peer Doubt-Solving Nexus -->
+      <section id="view-doubts" class="app-view">
+         <h1 class="heading"><i class="fas fa-question-circle"></i> <span data-i18n="heading_doubts">Peer Doubt-Solving Nexus</span></h1>
+         
+         <div class="doubts-header-bar">
+            <div class="doubts-search-group">
+               <i class="fas fa-search"></i>
+               <input type="text" id="doubt-search-input" placeholder="Search doubts by title, question or keyword..." oninput="handleDoubtSearch(this.value)">
+            </div>
+            <button class="btn primary-btn" onclick="openAskDoubtModal()"><i class="fas fa-plus"></i> Ask a Doubt (+Bounty)</button>
+         </div>
+
+         <!-- Tag Pills Bar -->
+         <div class="doubt-tag-filter-bar" id="doubt-tag-filters">
+            <!-- Dynamic tags -->
+         </div>
+
+         <!-- AI Instant Concept Explainer Feature Banner -->
+         <div class="ai-explainer-banner">
+            <div class="ai-badge"><i class="fas fa-sparkles"></i> AI Instant Co-Pilot</div>
+            <div class="ai-content">
+               <h4>Need instant clarity before community answers?</h4>
+               <p>Our peer portal instantly matches student doubts with key course lectures, interactive 3D lab modules, and smart hints.</p>
+            </div>
+            <button class="btn secondary-btn" onclick="triggerAIDoubtHelper()"><i class="fas fa-wand-magic-sparkles"></i> Quick Explainer</button>
+         </div>
+
+         <!-- Doubts List -->
+         <div class="doubts-feed" id="doubts-feed-container">
+            <!-- Dynamic questions & answers -->
+         </div>
+
+         <!-- Ask Doubt Modal -->
+         <div class="modal-backdrop" id="ask-doubt-modal">
+            <div class="modal-card">
+               <div class="modal-header">
+                  <h3><i class="fas fa-pen-fancy"></i> Post an Academic Doubt</h3>
+                  <button class="close-modal-btn" onclick="closeAskDoubtModal()"><i class="fas fa-times"></i></button>
+               </div>
+               <form id="ask-doubt-form" onsubmit="handleAskDoubtSubmit(event)">
+                  <p class="form-label">Question Title *</p>
+                  <input type="text" id="doubt-title" class="box" placeholder="e.g. Why does async/await return a Promise in ES6?" required>
+                  
+                  <div class="form-row-2">
+                     <div>
+                        <p class="form-label">Topic Category *</p>
+                        <select id="doubt-tag" class="box" required>
+                           <option value="JavaScript">JavaScript</option>
+                           <option value="React">React</option>
+                           <option value="Python">Python</option>
+                           <option value="Database">Database & SQL</option>
+                           <option value="Algorithms">Data Structures & Algo</option>
+                           <option value="CSS">CSS & Responsive Design</option>
+                        </select>
+                     </div>
+                     <div>
+                        <p class="form-label">XP Bounty for Accepted Answer</p>
+                        <select id="doubt-bounty" class="box">
+                           <option value="25">25 XP (Standard)</option>
+                           <option value="50" selected>50 XP (High Priority)</option>
+                           <option value="100">100 XP (Urgent Bounty)</option>
+                        </select>
+                     </div>
+                  </div>
+
+                  <p class="form-label">Doubt Explanation *</p>
+                  <textarea id="doubt-desc" class="box" rows="4" placeholder="Explain what you're trying to achieve and where you are stuck..." required></textarea>
+
+                  <p class="form-label">Code Snippet (Optional)</p>
+                  <textarea id="doubt-code" class="box code-font" rows="4" placeholder="// Paste relevant code here..."></textarea>
+
+                  <div class="modal-actions">
+                     <button type="button" class="btn option-btn" onclick="closeAskDoubtModal()">Cancel</button>
+                     <button type="submit" class="btn primary-btn"><i class="fas fa-paper-plane"></i> Publish Doubt</button>
+                  </div>
+               </form>
+            </div>
+         </div>
+      </section>
+
+      <!-- View: Project Collaboration & Academic Resource Hub -->
+      <section id="view-collab" class="app-view">
+         <h1 class="heading"><i class="fas fa-users-gear"></i> <span data-i18n="heading_collab">Project Collab & Resource Vault</span></h1>
+         
+         <!-- Sub-tab Navigation -->
+         <div class="collab-nav-tabs">
+            <button class="collab-tab-btn active" id="tab-btn-projects" onclick="switchCollabSubTab('projects')"><i class="fas fa-laptop-code"></i> Student Projects & Teams</button>
+            <button class="collab-tab-btn" id="tab-btn-resources" onclick="switchCollabSubTab('resources')"><i class="fas fa-folder-open"></i> Verified Academic Resource Vault</button>
+         </div>
+
+         <!-- Section A: Projects & Team Matchmaking -->
+         <div class="collab-sub-view active" id="collab-projects-view">
+            <div class="collab-action-strip">
+               <div class="filter-pill-group" id="collab-role-filters">
+                  <!-- Dynamic role filters -->
+               </div>
+               <button class="btn primary-btn" onclick="openCreateProjectModal()"><i class="fas fa-plus"></i> Pitch a Project</button>
+            </div>
+
+            <div class="collab-projects-grid" id="collab-projects-container">
+               <!-- Dynamic project cards -->
+            </div>
+         </div>
+
+         <!-- Section B: Academic Resource Vault -->
+         <div class="collab-sub-view" id="collab-resources-view">
+            <div class="collab-action-strip">
+               <div class="doubts-search-group" style="max-width: 400px;">
+                  <i class="fas fa-search"></i>
+                  <input type="text" id="resource-search-input" placeholder="Search cheatsheets, lecture notes, templates..." oninput="handleResourceSearch(this.value)">
+               </div>
+               <div class="filter-pill-group" id="collab-resource-filters">
+                  <!-- Dynamic resource category filters -->
+               </div>
+               <button class="btn secondary-btn" onclick="openShareResourceModal()"><i class="fas fa-upload"></i> Share Resource</button>
+            </div>
+
+            <div class="resources-grid" id="collab-resources-container">
+               <!-- Dynamic resource cards -->
+            </div>
+         </div>
+
+         <!-- Pitch Project Modal -->
+         <div class="modal-backdrop" id="pitch-project-modal">
+            <div class="modal-card">
+               <div class="modal-header">
+                  <h3><i class="fas fa-rocket"></i> Pitch a Student Project</h3>
+                  <button class="close-modal-btn" onclick="closeCreateProjectModal()"><i class="fas fa-times"></i></button>
+               </div>
+               <form id="pitch-project-form" onsubmit="handlePitchProjectSubmit(event)">
+                  <p class="form-label">Project Title *</p>
+                  <input type="text" id="proj-title" class="box" placeholder="e.g. AI-Powered Smart Campus Navigation" required>
+                  
+                  <div class="form-row-2">
+                     <div>
+                        <p class="form-label">Category *</p>
+                        <select id="proj-category" class="box" required>
+                           <option value="Web Development">Web Development</option>
+                           <option value="AI & ML">AI & Machine Learning</option>
+                           <option value="Mobile App">Mobile App</option>
+                           <option value="Cloud & Systems">Cloud & Systems</option>
+                        </select>
+                     </div>
+                     <div>
+                        <p class="form-label">Roles Needed *</p>
+                        <input type="text" id="proj-roles" class="box" placeholder="e.g. Frontend Dev, UI/UX" required>
+                     </div>
+                  </div>
+
+                  <p class="form-label">Project Pitch & Goals *</p>
+                  <textarea id="proj-desc" class="box" rows="4" placeholder="Describe the problem, current progress, and what you aim to build together..." required></textarea>
+
+                  <p class="form-label">Tech Stack (comma separated)</p>
+                  <input type="text" id="proj-tech" class="box" placeholder="React, Node.js, Tailwind, SQLite">
+
+                  <div class="modal-actions">
+                     <button type="button" class="btn option-btn" onclick="closeCreateProjectModal()">Cancel</button>
+                     <button type="submit" class="btn primary-btn"><i class="fas fa-paper-plane"></i> Launch Recruitment</button>
+                  </div>
+               </form>
+            </div>
+         </div>
+
+         <!-- Share Resource Modal -->
+         <div class="modal-backdrop" id="share-resource-modal">
+            <div class="modal-card">
+               <div class="modal-header">
+                  <h3><i class="fas fa-cloud-upload-alt"></i> Share Academic Resource</h3>
+                  <button class="close-modal-btn" onclick="closeShareResourceModal()"><i class="fas fa-times"></i></button>
+               </div>
+               <form id="share-resource-form" onsubmit="handleShareResourceSubmit(event)">
+                  <p class="form-label">Resource Title *</p>
+                  <input type="text" id="res-title" class="box" placeholder="e.g. Ultimate CSS Flexbox & Grid Cheatsheet" required>
+                  
+                  <div class="form-row-2">
+                     <div>
+                        <p class="form-label">Format / Type *</p>
+                        <select id="res-type" class="box" required>
+                           <option value="Cheatsheet">Cheatsheet (PDF/Doc)</option>
+                           <option value="Study Notes">Lecture Notes</option>
+                           <option value="Starter Kit">Starter Code Kit</option>
+                           <option value="Exam Prep">Exam Preparation Guide</option>
+                        </select>
+                     </div>
+                     <div>
+                        <p class="form-label">Subject Topic *</p>
+                        <input type="text" id="res-topic" class="box" placeholder="e.g. Web Dev / DSA" required>
+                     </div>
+                  </div>
+
+                  <p class="form-label">Summary / Highlights *</p>
+                  <textarea id="res-desc" class="box" rows="3" placeholder="Briefly describe what students will gain from this resource..." required></textarea>
+
+                  <div class="modal-actions">
+                     <button type="button" class="btn option-btn" onclick="closeShareResourceModal()">Cancel</button>
+                     <button type="submit" class="btn primary-btn"><i class="fas fa-check"></i> Upload to Vault</button>
+                  </div>
+               </form>
+            </div>
+         </div>
+      </section>
+
+      <!-- View: Instructor / Tutor Analytics Area -->
+      <section id="view-instructor" class="app-view">
+         <h1 class="heading"><i class="fas fa-chart-line"></i> <span data-i18n="heading_instructor">Tutor Analytics Center</span></h1>
+         
+         <div class="instructor-analytics-grid">
+            <div class="box metric-card">
+               <i class="fas fa-wallet" style="color: #2ecc71;"></i>
+               <div>
+                  <h3>$3,450</h3>
+                  <p>Total Tutor Earnings</p>
+               </div>
+            </div>
+            <div class="box metric-card">
+               <i class="fas fa-users" style="color: #3498db;"></i>
+               <div>
+                  <h3>182</h3>
+                  <p>Active Students Enrolled</p>
+               </div>
+            </div>
+            <div class="box metric-card">
+               <i class="fas fa-circle-question" style="color: #f1c40f;"></i>
+               <div>
+                  <h3>78.2%</h3>
+                  <p>Average Quiz Score</p>
+               </div>
+            </div>
+            <div class="box metric-card">
+               <i class="fas fa-star" style="color: #e67e22;"></i>
+               <div>
+                  <h3>4.9 / 5</h3>
+                  <p>Tutor Rating (48 reviews)</p>
+               </div>
+            </div>
+         </div>
+
+         <div class="instructor-charts-row">
+            <div class="box chart-box">
+               <h3><i class="fas fa-chart-bar"></i> Course Enrollments Breakdown</h3>
+               <div class="chart-container">
+                  <canvas id="courseEnrollmentChart"></canvas>
+               </div>
+            </div>
+            <div class="box chart-box">
+               <h3><i class="fas fa-chart-area"></i> Student Weekly Study Activity (Hours)</h3>
+               <div class="chart-container">
+                  <canvas id="weeklyActivityChart"></canvas>
+               </div>
+            </div>
+         </div>
+
+         <div class="recent-students-log">
+            <h3 class="sub-heading"><i class="fas fa-clock"></i> Recent Student Submissions</h3>
+            <div class="table-container">
+               <table class="analytics-table">
+                  <thead>
+                     <tr>
+                        <th>Student</th>
+                        <th>Activity</th>
+                        <th>Quiz Grade</th>
+                        <th>XP Payout</th>
+                        <th>Date</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr>
+                        <td><strong>Alice Vance</strong></td>
+                        <td>Complete HTML5 Masterclass (Quiz)</td>
+                        <td><span class="status-pass">100%</span></td>
+                        <td>+100 XP</td>
+                        <td>Today</td>
+                     </tr>
+                     <tr>
+                        <td><strong>Ben Carter</strong></td>
+                        <td>JavaScript ES6 Essentials (Quiz)</td>
+                        <td><span class="status-pass">66%</span></td>
+                        <td>+100 XP</td>
+                        <td>Today</td>
+                     </tr>
+                     <tr>
+                        <td><strong>Carlos Ortega</strong></td>
+                        <td>Figma UI Design (Quiz)</td>
+                        <td><span class="status-fail">50%</span></td>
+                        <td>0 XP</td>
+                        <td>Yesterday</td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+         </div>
+      </section>
+
+      <!-- View: Teachers List -->
+      <section id="view-teachers" class="app-view">
+         <h1 class="heading" data-i18n="heading_tutors_list">Expert Tutors</h1>
+         
+         <div class="filter-controls">
+            <div class="search-box">
+               <input type="text" id="teacher-filter-search" data-i18n-placeholder="filter_tutor_placeholder" placeholder="Search tutors by name or profession...">
+               <i class="fas fa-search"></i>
+            </div>
+         </div>
+
+         <div class="teachers-grid" id="teachers-container">
+            <!-- Dynamic tutors list -->
+         </div>
+      </section>
+
+      <!-- View: Teacher Profile -->
+      <section id="view-tutor-profile" class="app-view">
+         <h1 class="heading" data-i18n="heading_tutor_profile">Tutor Profile</h1>
+         <div id="tutor-profile-container">
+            <!-- Dynamic tutor details and their courses -->
+         </div>
+      </section>
+
+      <!-- View: Student Profile Dashboard -->
+      <section id="view-profile" class="app-view">
+         <h1 class="heading" data-i18n="heading_dashboard">Student Dashboard</h1>
+         <div id="student-profile-container">
+            <!-- Dynamic profile card and detailed tabs for Bookmarks, Comments, and Badges -->
+         </div>
+      </section>
+
+      <!-- View: Update Profile -->
+      <section id="view-update-profile" class="app-view">
+         <h1 class="heading" data-i18n="heading_update_profile">Update Profile</h1>
+         <div class="form-container">
+            <form id="update-profile-form" onsubmit="event.preventDefault();">
+               <h3 data-i18n="title_update_form">Edit Profile Details</h3>
+               <p data-i18n="lbl_name">Name</p>
+               <input type="text" id="update-name" placeholder="Enter name" class="box" required>
+               <p data-i18n="lbl_email">Email</p>
+               <input type="email" id="update-email" placeholder="Enter email" class="box" required>
+               <p data-i18n="lbl_avatar">Select Mock Avatar</p>
+               <select id="update-avatar" class="box">
+                  <option value="pic-1.jpg">Avatar 1 (Male Developer)</option>
+                  <option value="pic-2.jpg">Avatar 2 (Female Student)</option>
+                  <option value="pic-3.jpg">Avatar 3 (Male Instructor)</option>
+                  <option value="pic-4.jpg">Avatar 4 (Female Instructor)</option>
+                  <option value="pic-5.jpg">Avatar 5 (Gamer Male)</option>
+                  <option value="pic-6.jpg">Avatar 6 (Creative Designer)</option>
+               </select>
+               <p data-i18n="lbl_old_pass">Current Password</p>
+               <input type="password" id="update-old-pass" placeholder="Enter current password" class="box">
+               <p data-i18n="lbl_new_pass">New Password</p>
+               <input type="password" id="update-new-pass" placeholder="Enter new password" class="box">
+               <p data-i18n="lbl_confirm_pass">Confirm Password</p>
+               <input type="password" id="update-confirm-pass" placeholder="Confirm new password" class="box">
+               
+               <button type="submit" class="btn primary-btn" data-i18n="btn_update_now">Update Profile</button>
+            </form>
+         </div>
+      </section>
+
+      <!-- View: Contact Us -->
+      <section id="view-contact" class="app-view">
+         <h1 class="heading" data-i18n="nav_contact">Contact Us</h1>
+         <div class="contact-row">
+            <div class="image">
+               <div class="contact-graphic-card">
+                  <i class="fas fa-headset banner-icon"></i>
+                  <h3 data-i18n="contact_title">Get In Touch</h3>
+                  <p data-i18n="contact_desc">Our support team is online 24/7 to assist you with course registration, certification, or tutoring options.</p>
+                  <div class="contact-info-pills">
+                     <div class="pill"><i class="fas fa-phone"></i> <span>+123 456 7890</span></div>
+                     <div class="pill"><i class="fas fa-envelope"></i> <span>support@educa.com</span></div>
+                     <div class="pill"><i class="fas fa-map-marker-alt"></i> <span data-i18n="contact_loc">Tech City, India</span></div>
+                  </div>
+               </div>
+            </div>
+            <div class="form-container">
+               <form id="contact-form" onsubmit="event.preventDefault();">
+                  <h3 data-i18n="title_contact_form">Send a Message</h3>
+                  <input type="text" id="contact-name" data-i18n-placeholder="placeholder_name" placeholder="Enter your name" class="box" required>
+                  <input type="email" id="contact-email" data-i18n-placeholder="placeholder_email" placeholder="Enter your email" class="box" required>
+                  <input type="number" id="contact-number" data-i18n-placeholder="placeholder_phone" placeholder="Enter your phone number" class="box" required min="1000000000" max="9999999999">
+                  <textarea id="contact-message" data-i18n-placeholder="placeholder_msg" placeholder="Enter your message" class="box" required cols="30" rows="10"></textarea>
+                  <button type="submit" class="btn primary-btn" data-i18n="btn_submit_msg">Submit Message</button>
+               </form>
+            </div>
+         </div>
+      </section>
+
+      <!-- View: Login / Register -->
+      <section id="view-login" class="app-view">
+         <div class="auth-wrapper">
+            <div class="form-container active-form" id="login-form-container">
+               <form id="login-form" onsubmit="event.preventDefault();">
+                  <h3 data-i18n="title_login">Welcome Back</h3>
+                  <p><span data-i18n="lbl_email">Email</span> <span>*</span></p>
+                  <input type="email" id="login-email" placeholder="Enter email" class="box" required>
+                  <p><span data-i18n="lbl_old_pass">Password</span> <span>*</span></p>
+                  <input type="password" id="login-password" placeholder="Enter password" class="box" required>
+                  <button type="submit" class="btn primary-btn" data-i18n="btn_login">Login Student</button>
+                  <p class="auth-switch"><span data-i18n="auth_no_account">Don't have an account?</span> <a href="#register" id="switch-to-register" data-i18n="auth_switch_register">Register here</a></p>
+               </form>
+            </div>
+
+            <div class="form-container" id="register-form-container">
+               <form id="register-form" onsubmit="event.preventDefault();">
+                  <h3 data-i18n="title_register">Create Account</h3>
+                  <p><span data-i18n="lbl_name">Name</span> <span>*</span></p>
+                  <input type="text" id="reg-name" placeholder="Enter name" class="box" required>
+                  <p><span data-i18n="lbl_email">Email</span> <span>*</span></p>
+                  <input type="email" id="reg-email" placeholder="Enter email" class="box" required>
+                  <p><span data-i18n="lbl_new_pass">Password</span> <span>*</span></p>
+                  <input type="password" id="reg-password" placeholder="Enter password" class="box" required>
+                  <p><span data-i18n="lbl_confirm_pass">Confirm Password</span> <span>*</span></p>
+                  <input type="password" id="reg-confirm-password" placeholder="Confirm password" class="box" required>
+                  <p data-i18n="lbl_avatar">Choose Avatar</p>
+                  <select id="reg-avatar" class="box">
+                     <option value="pic-1.jpg">Avatar 1 (Male Developer)</option>
+                     <option value="pic-2.jpg">Avatar 2 (Female Student)</option>
+                     <option value="pic-3.jpg">Avatar 3 (Male Instructor)</option>
+                     <option value="pic-4.jpg">Avatar 4 (Female Instructor)</option>
+                     <option value="pic-5.jpg">Avatar 5 (Gamer Male)</option>
+                     <option value="pic-6.jpg">Avatar 6 (Creative Designer)</option>
+                  </select>
+                  <button type="submit" class="btn primary-btn" data-i18n="btn_register">Register Account</button>
+                  <p class="auth-switch"><span data-i18n="auth_has_account">Already have an account?</span> <a href="#login" id="switch-to-login" data-i18n="auth_switch_login">Login here</a></p>
+               </form>
+            </div>
+         </div>
+      </section>
+
+   </main>
+
+   <!-- Footer Section -->
+   <footer class="footer">
+      &copy; 2026 <span>Edu-Verse</span> | All Rights Reserved. Designed for next-gen education.
+   </footer>
+
+   <!-- Supabase Client Library & Realtime Backend Service -->
+   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+   <script src="supabase-client.js"></script>
+
+   <!-- Custom Script -->
+   <script src="script.js"></script>
+</body>
+</html>
